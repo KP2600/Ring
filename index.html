@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#11130f"><title>Cinder Colossus · The Moonlit Ledge · 360°</title>
+<meta name="theme-color" content="#11130f"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>Cinder Colossus · The Moonlit Ledge · 360°</title>
 <style>
 :root{color-scheme:dark;--gold:#d5bf8e;--ivory:#eee6d4;--fine:#a28b62;font-family:Georgia,'Times New Roman',serif}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080a0a;color:var(--ivory)}body{display:grid;place-items:center}button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}button:focus-visible{outline:2px solid #e9d5a0;outline-offset:4px}button:disabled{cursor:wait}
@@ -31,13 +31,32 @@
 .options{position:absolute;bottom:5.2%;right:3.4%;display:flex;gap:8px}.options button{padding:6px 10px;color:#e2d9c1;background:#1719179c;border:1px solid #897c6166;font-size:clamp(10px,.86cqw,14px)}
 #help{position:absolute;inset:0;z-index:5;background:#0d100def;overflow:auto;display:grid;align-content:center;justify-items:center;padding:2% 5%}#help>div{width:min(82%,790px)}#help h2{font-size:clamp(20px,3cqw,45px);font-weight:400;margin:0 0 .3em}#help p{font-size:clamp(11px,1.12cqw,17px);color:#c6bfae;line-height:1.4;margin:.4em 0 .8em}
 .keygrid{display:grid;grid-template-columns:1fr 1fr;gap:.45cqw 2.5cqw;margin:1cqw 0 1.3cqw}.keygrid div{display:flex;justify-content:space-between;align-items:center;gap:.5em;padding:.45em 0;border-bottom:1px solid #80765d52;font-size:clamp(11px,1.15cqw,18px)}kbd{font:normal .83em system-ui,sans-serif;color:#d6c7a5}
-#touch{position:absolute;inset:0;pointer-events:none;z-index:2;user-select:none}.pad,#buttons button{pointer-events:auto;touch-action:none}.pad{position:absolute;bottom:7%;left:4%;width:clamp(62px,9.8cqw,115px);aspect-ratio:1;border:1px solid #cdbf9561;border-radius:100%;background:#171a164a;display:grid;place-items:center}.pad i{width:43%;height:43%;border:1px solid #eae1c993;border-radius:100%;background:#ab9f8252}
-#buttons{position:absolute;right:3%;bottom:7%;display:grid;grid-template-columns:repeat(2,1fr);gap:5px}#buttons button{border:1px solid #d3c5a081;border-radius:4px;background:#1a1d19a3;color:#f2ead9;min-width:50px;min-height:34px;font-size:clamp(11px,1.18cqw,16px)}#buttons button[data-do="fault"]{border-color:#c89c6c}#buttons button[data-do="storm"]{border-color:#ab95c6}#buttons button:active{background:#655947dc}
-body.touching .gear{bottom:28%}#banner{position:absolute;left:0;right:0;top:40%;text-align:center;color:#dfc18b;font-size:clamp(26px,5cqw,82px);font-weight:400;letter-spacing:.1em;background:linear-gradient(90deg,transparent,#15140ec9,transparent);padding:.14em;z-index:2;pointer-events:none;text-shadow:0 2px 7px #0009}
-@media(max-width:650px) and (orientation:portrait){#stage{overflow:visible}#panel{width:56%}#overlay{padding:4%}#description{font-size:10px;margin:0 0 .6em}h1{font-size:30px}.options{bottom:4%;right:2%;gap:3px}.options button{font-size:9px;padding:4px}.mainbtn{padding:.38em .6em}.pad{top:calc(100% + 20px);left:4%;width:83px}#buttons{top:calc(100% + 20px);bottom:auto}#buttons button{min-width:58px;min-height:39px}.playtools{right:2%;top:3%}.round{min-width:26px;min-height:24px}body.touching .gear{bottom:5%}#help{padding:2%;align-content:start}#help>div{width:95%}.keygrid{gap:0 12px}.keygrid div{padding:.2em 0}}
+#touch{position:absolute;inset:0;pointer-events:none;z-index:2;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;--u:1cqw;--inL:max(0px,env(safe-area-inset-left));--inR:max(0px,env(safe-area-inset-right))}
+#moveZone{position:absolute;left:0;bottom:0;width:44%;height:62%;pointer-events:auto;touch-action:none}
+.pad{position:absolute;left:calc(4% + var(--inL));bottom:7%;width:max(84px,calc(var(--u)*13));aspect-ratio:1;border:1.5px solid #cdbf9578;border-radius:50%;background:radial-gradient(circle,#1b1e1a38 0,#171a1675 72%);box-shadow:0 0 0 1px #0006;display:grid;place-items:center;pointer-events:none;touch-action:none;opacity:.72;transition:opacity .15s,border-color .15s}
+.pad.on{opacity:1;border-color:#e6d8ad}
+.pad i{width:44%;height:44%;border:1.5px solid #f0e7cfb8;border-radius:50%;background:radial-gradient(circle at 40% 35%,#dccfa8b0,#8b7f61a8);box-shadow:0 2px 6px #0008;will-change:transform}
+#buttons{position:absolute;right:calc(2% + var(--inR));bottom:4%;width:calc(var(--u)*38);height:calc(var(--u)*35);pointer-events:none}
+#buttons button{position:absolute;pointer-events:auto;touch-action:none;border-radius:50%;border:1.5px solid #d3c5a0b0;background:radial-gradient(circle at 38% 30%,#2d302ae0,#161915e0);color:#f4ecda;display:grid;place-items:center;padding:0;line-height:1;font-size:max(11px,calc(var(--u)*1.5));letter-spacing:.02em;box-shadow:0 2px 8px #0009;-webkit-tap-highlight-color:transparent;transition:transform .06s,background .06s,opacity .15s}
+#buttons button.down,#buttons button:active{transform:scale(.9);background:radial-gradient(circle at 40% 35%,#8d7d5af2,#4f4631f2)}
+#buttons button.dim{opacity:.4}
+#buttons [data-do="attack"]{width:max(66px,calc(var(--u)*13));height:max(66px,calc(var(--u)*13));right:0;bottom:calc(var(--u)*2);border-color:#e4cf94;font-size:max(12px,calc(var(--u)*1.8))}
+#buttons [data-do="roll"]{width:max(54px,calc(var(--u)*10));height:max(54px,calc(var(--u)*10));right:calc(var(--u)*14.5);bottom:calc(var(--u)*.5);border-color:#cfd6d4}
+#buttons [data-do="wave"]{width:max(48px,calc(var(--u)*8));height:max(48px,calc(var(--u)*8));right:0;bottom:calc(var(--u)*16);border-color:#8fb4c8}
+#buttons [data-do="fault"]{width:max(48px,calc(var(--u)*8));height:max(48px,calc(var(--u)*8));right:calc(var(--u)*9);bottom:calc(var(--u)*16);border-color:#c89c6c}
+#buttons [data-do="storm"]{width:max(48px,calc(var(--u)*8));height:max(48px,calc(var(--u)*8));right:calc(var(--u)*18);bottom:calc(var(--u)*12);border-color:#ab95c6}
+#buttons [data-do="thrust"]{width:max(48px,calc(var(--u)*8));height:max(48px,calc(var(--u)*8));right:calc(var(--u)*26);bottom:calc(var(--u)*1.5);border-color:#d6c28a}
+#buttons [data-do="kick"]{width:max(44px,calc(var(--u)*7));height:max(44px,calc(var(--u)*7));right:calc(var(--u)*27.5);bottom:calc(var(--u)*11.5);border-color:#c9a59a}
+#buttons [data-do="slip"]{width:max(44px,calc(var(--u)*7));height:max(44px,calc(var(--u)*7));right:calc(var(--u)*28.5);bottom:calc(var(--u)*20.5);border-color:#a9c9b8}
+#buttons [data-do="guard"]{width:max(48px,calc(var(--u)*8));height:max(48px,calc(var(--u)*8));right:calc(var(--u)*9);bottom:calc(var(--u)*25.5);border-color:#b8c4d6}
+#buttons [data-do="sprint"]{width:max(44px,calc(var(--u)*7));height:max(44px,calc(var(--u)*7));right:0;bottom:calc(var(--u)*25.5);border-color:#d8d0a8}
+#buttons [data-do="heal"]{width:max(44px,calc(var(--u)*7));height:max(44px,calc(var(--u)*7));right:calc(var(--u)*19);bottom:calc(var(--u)*22);border-color:#9bbf86}
+body.touching .round{min-width:42px;min-height:38px}
+body.touching .gear{bottom:33%}#banner{position:absolute;left:0;right:0;top:40%;text-align:center;color:#dfc18b;font-size:clamp(26px,5cqw,82px);font-weight:400;letter-spacing:.1em;background:linear-gradient(90deg,transparent,#15140ec9,transparent);padding:.14em;z-index:2;pointer-events:none;text-shadow:0 2px 7px #0009}
+@media(max-width:650px) and (orientation:portrait){#stage{overflow:visible}#panel{width:56%}#overlay{padding:4%}#description{font-size:10px;margin:0 0 .6em}h1{font-size:30px}.options{bottom:4%;right:2%;gap:3px}.options button{font-size:9px;padding:4px}.mainbtn{padding:.38em .6em}#touch{--u:max(5.2px,1.45cqw)}#moveZone{top:100%;bottom:auto;height:100vh;width:50%}.pad{top:calc(100% + 24px);bottom:auto;left:4%}#buttons{top:calc(100% + 14px);bottom:auto;right:3%}.playtools{right:2%;top:3%}.round{min-width:36px;min-height:32px}body.touching .gear{bottom:5%}#help{padding:2%;align-content:start}#help>div{width:95%}.keygrid{gap:0 12px}.keygrid div{padding:.2em 0}}
 @media(max-height:480px) and (orientation:landscape){#description{margin-bottom:.8em}.keygrid div{padding:.25em 0}#help p{margin:.2em 0 .4em}.options{bottom:3%}}
 .mixer{display:flex;flex-wrap:wrap;gap:.5em 2em;margin:.8em 0 1.15em;font-size:clamp(11px,1.1cqw,17px)}.mixer label{display:flex;align-items:center;gap:.65em}.mixer input{accent-color:#b79f72;width:clamp(55px,8cqw,125px)}.mixer output{font:normal .8em system-ui;color:#c5b89c;min-width:3ch}@media(max-height:550px){#help{align-content:start}}
-#fps{align-self:center;padding:.32em .52em;border:1px solid #80765d55;background:#101511a6;color:#ddd4bb;font:500 clamp(9px,.82cqw,13px)/1.2 system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}</style></head>
+#fstoast{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);max-width:86%;padding:.7em 1em;border:1px solid #c3b79b80;background:#101511ee;color:var(--ivory);font:500 clamp(11px,1.5cqw,15px)/1.35 system-ui,sans-serif;text-align:center;z-index:60;pointer-events:none;opacity:0;transition:opacity .25s}#fstoast.on{opacity:1}#fps{align-self:center;padding:.32em .52em;border:1px solid #80765d55;background:#101511a6;color:#ddd4bb;font:500 clamp(9px,.82cqw,13px)/1.2 system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}</style></head>
 <body><main id="stage" aria-label="Cinder Colossus game">
 <canvas id="ground" class="layer" aria-label="Courtyard combat arena"></canvas><div class="layer lens"></div>
 <div id="hud" hidden>
@@ -46,14 +65,14 @@ body.touching .gear{bottom:28%}#banner{position:absolute;left:0;right:0;top:40%;
  <div class="gear"><div class="slot" aria-label="Healing flasks"><svg viewBox="0 0 50 65" aria-hidden="true"><defs><radialGradient id="glass" cx=".4" cy=".35"><stop stop-color="#ffdda1"/><stop offset=".3" stop-color="#b77e31"/><stop offset=".7" stop-color="#784227"/><stop offset="1" stop-color="#3e2f20"/></radialGradient></defs><path d="m21 11 12 1-2 7c-3 8 3 11 7 19 5 11-1 18-13 18-13 0-18-9-13-18 4-8 12-13 9-20z" fill="url(#glass)" stroke="#bca470"/><path d="m19 9 15 2-1 6-15-2zM18 22l13 2" fill="#8e7c4f" stroke="#dbc99a"/><path d="M18 36c-5 11-4 14 0 16m3-20-3 6" fill="none" stroke="#ffce7c"/></svg><b id="flask"></b></div><label>Moonlit greatsword</label></div>
  <div id="foe"><div class="foebar" role="meter" aria-label="Guardian health" aria-valuemin="0" aria-valuemax="420"><span></span><i aria-hidden="true"></i></div><small id="damage"></small></div><div id="lock"></div><div id="cue" aria-live="polite"></div>
 </div>
-<div class="playtools" id="playtools" hidden><output id="fps" title="Rendered frames per second" aria-label="Rendered frames per second" aria-live="off">… FPS</output><button class="round" id="centerCam" aria-label="Face the guardian" title="Face the guardian (C)">◎</button><button class="round" id="pause" aria-label="Pause game" title="Pause (Esc)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 2h3v12H3zm7 0h3v12h-3z"/></svg></button></div>
-<div id="touch" hidden><div class="pad" aria-label="Move"><i></i></div><div id="buttons"><button data-do="attack">Strike</button><button data-do="wave">Wave</button><button data-do="fault">Faultbreaker</button><button data-do="storm">Storm Lance</button><button data-do="roll">Dodge</button><button data-do="heal">Flask</button></div></div>
+<div class="playtools" id="playtools" hidden><output id="fps" title="Rendered frames per second" aria-label="Rendered frames per second" aria-live="off">… FPS</output><button class="round" id="centerCam" aria-label="Face the guardian" title="Face the guardian (C)">◎</button><button class="round" id="fullscreen2" aria-label="Full screen" title="Full screen (Enter)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg></button><button class="round" id="pause" aria-label="Pause game" title="Pause (Esc)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 2h3v12H3zm7 0h3v12h-3z"/></svg></button></div>
+<div id="touch" hidden><div id="moveZone" aria-label="Move"></div><div class="pad"><i></i></div><div id="buttons"><button data-do="attack" aria-label="Strike">Strike</button><button data-do="wave" aria-label="Wave">Wave</button><button data-do="fault" aria-label="Faultbreaker">Fault</button><button data-do="storm" aria-label="Storm Lance">Storm</button><button data-do="roll" aria-label="Dodge">Dodge</button><button data-do="thrust" aria-label="Lunge thrust">Lunge</button><button data-do="kick" aria-label="Push kick">Kick</button><button data-do="slip" aria-label="Slip step">Step</button><button data-do="guard" aria-label="Guard and parry">Guard</button><button data-do="sprint" aria-label="Sprint">Run</button><button data-do="heal" aria-label="Flask">Flask</button></div></div>
 <div id="banner" hidden></div>
 <section id="overlay"><div id="panel"><div id="place">The Moonlit Ledge</div><h1>Cinder<br>Colossus</h1><p id="description">Catch the guardian’s sweep on a roll. Strike as you rise, or hold your blade high to send a moonlit wave.</p>
 <div id="actions"><button id="primary" class="mainbtn" disabled>Loading courtyard…</button><button id="guide" class="subbtn">Controls</button><button id="restart" class="subbtn" hidden>Restart encounter</button></div></div>
 <div class="options"><button id="audio" aria-pressed="true">Sound on</button><button id="motion" aria-pressed="false">Motion full</button><button id="fullscreen">Full screen</button></div></section>
-<section id="help" hidden aria-label="Controls"><div><h2>Controls</h2><p>Defeat the guardian. Strike within reach or send a charged wave across the ledge. Tap Strike again as the blade crosses your body to chain a backhand and an overhead finisher. Press Strike during a roll to rise into an upward cut.</p>
-<div class="keygrid"><div>Move relative to camera <kbd>W A S D / Arrows</kbd></div><div>Quick strike <kbd>Tap J / Left click</kbd></div><div>Charged wave <kbd>Hold J, release / K</kbd></div><div>Dodge <kbd>Space / Right click</kbd></div><div>Faultbreaker <kbd>U / LB</kbd></div><div>Storm Lance <kbd>I / RB</kbd></div><div>Drink flask <kbd>F</kbd></div><div>Pause <kbd>Esc / P</kbd></div><div>Orbit camera <kbd>Drag / Q and E</kbd></div><div>Recenter / zoom <kbd>C / Wheel</kbd></div></div>
+<section id="help" hidden aria-label="Controls"><div><h2>Controls</h2><p>Defeat the guardian. Strike within reach or send a charged wave across the ledge. Tap Strike again as the blade crosses your body to chain a backhand and an overhead finisher. Press Strike during a roll to rise into an upward cut. Sprint to close distance, lunge with a thrust, push-kick to break an attack, slip aside or back-step, and raise your guard: a block just as a blow lands is a parry that staggers the guardian and opens a riposte.</p>
+<div class="keygrid"><div>Move relative to camera <kbd>W A S D / Arrows</kbd></div><div>Quick strike <kbd>Tap J / Left click</kbd></div><div>Charged wave <kbd>Hold J, release / K</kbd></div><div>Dodge <kbd>Space / Right click</kbd></div><div>Faultbreaker <kbd>U / LB</kbd></div><div>Storm Lance <kbd>I / RB</kbd></div><div>Drink flask <kbd>F</kbd></div><div>Sprint <kbd>Hold Shift / L3</kbd></div><div>Lunge thrust <kbd>L / RT</kbd></div><div>Push kick <kbd>G / D-pad Up</kbd></div><div>Slip step / back-step <kbd>V / D-pad Down</kbd></div><div>Guard &amp; parry <kbd>Hold H / LT</kbd></div><div>Pause <kbd>Esc / P</kbd></div><div>Orbit camera <kbd>Drag / Q and E</kbd></div><div>Recenter / zoom <kbd>C / Wheel</kbd></div></div>
 <p>Cross the lip to drop into the lane. Dodge toward the ledge to vault back up. Faultbreaker drives a burning fissure forward (31 stamina, 14 focus). Storm Lance marks the ground for a delayed lightning strike (26 stamina, 21 focus). Rest to regain stamina and focus.</p><p>Use the right stick to orbit and press it to face the guardian. On a controller, X strikes, Y casts, B dodges and A heals. On a touchscreen, drag the arena to turn the camera.</p><div class="mixer" aria-label="Audio mix"><label>Music <input type="range" min="0" max="100" id="musicLevel" value="82"><output for="musicLevel">82%</output></label><label>Battle effects <input type="range" min="0" max="100" id="effectsLevel" value="92"><output for="effectsLevel">92%</output></label></div><button class="mainbtn" id="closeHelp">Back</button></div></section>
 </main>
 <script>console.warn('Scripts "build/three.js" and "build/three.min.js" are deprecated with r150+, and will be removed with r160. Please use ES Modules or alternatives: https://threejs.org/docs/index.html#manual/en/introduction/Installation'),
@@ -4871,6 +4890,7 @@ const Motion=(()=>{
     let x=(g.balanceX||0),z=(g.balanceZ||0),y=-.078+.018*(g.phase||0)-.022*(g.compression||0);
     let yaw=-.098*stride,pitch=.055+zv*.027,bank=-xv*.026;
     if(p.state==='idle')y+=.011*Math.sin(p.breath||0);
+    if(p.sprinting&&p.state==='move'){pitch+=.2;y-=.04;z-=.04;yaw-=.05*Math.sin((p.walk||0)*.5);}
     if(p.state==='charge'){
       const u=clamp(p.charge/.64);x-=.046*u;z-=.083*u;y-=.044*u;
       yaw=-.51*u;pitch-=.16*u;y-=.059*u;
@@ -4895,6 +4915,19 @@ const Motion=(()=>{
       const u=Math.sin(Math.PI*clamp(t/.48));y-=.107*u;z-=.11*u;pitch-=.24*u;bank+=.09*u;
     }else if(p.state==='vault'){
       const u=Math.sin(Math.PI*clamp(t/Combat.vaultTime));pitch+=.47*u;y-=.17*u;
+    }else if(p.state==='thrust'){
+      const q=curve(t,[[0,[0,0,0,0]],[.14,[-.34,-.09,-.07,.04]],[.23,[.30,.16,-.20,.20]],[.36,[.27,.13,-.17,.14]],[.62,[0,0,0,0]]]);
+      yaw+=q[0];z+=q[1];y+=q[2];pitch+=q[3];x+=q[0]*.05;bank+=q[0]*.08;
+    }else if(p.state==='kick'){
+      const k=curve(t,[[0,[0,0,0,0]],[.15,[-.10,-.06,-.04,-.16]],[.24,[.10,0,-.03,-.30]],[.34,[.08,-.02,-.03,-.26]],[.55,[0,0,0,0]]]);
+      yaw+=k[0];z+=k[1];y+=k[2];pitch+=k[3];bank+=k[0]*.4;
+    }else if(p.state==='guard'){
+      const u=clamp(t/.16),w=u*u*(3-2*u);
+      y-=.055*w;z-=.035*w;yaw-=.30*w;pitch+=.04*w;x-=.02*w;
+      if(p.guardFlash>0)z-=.05*Math.sin(Math.PI*clamp(p.guardFlash/.3));
+    }else if(p.state==='slip'){
+      const u=Math.sin(Math.PI*clamp(t/.34));
+      y-=.085*u;pitch+=.16*u*(p.slipZ||0);bank-=.15*u*(p.slipX||0);yaw+=.14*u*(p.slipX||0);
     }else if(p.state==='dead'){
       const u=clamp(t/.53),buckled=u*u*(3-2*u);y-=.32*buckled;pitch+=.35*buckled;
     }
@@ -4970,6 +5003,9 @@ const Motion=(()=>{
         [.295,[.17,1.66,.34,.61,.77,.18]],[.38,[.10,1.62,.22,.48,.83,-.24]],[.55,guard]]):
         curve(t,[[0,p.weaponFrom||guard],...(p.linked?linkedClips:cutClips)[p.combo]]);
     }
+    if(p.state==='thrust')frame=curve(t,[[0,p.weaponFrom||guard],[.14,[-.27,1.16,-.04,-.04,.08,1]],[.225,[-.07,1.32,.52,.01,.05,1]],[.36,[-.09,1.30,.46,0,.04,1]],[.62,guard]]);
+    if(p.state==='kick')frame=curve(t,[[0,p.weaponFrom||guard],[.15,[-.32,1.28,.12,-.40,.78,.45]],[.34,[-.32,1.28,.12,-.40,.78,.45]],[.55,guard]]);
+    if(p.state==='guard'){const gu=clamp(t/.14),hi=[-.02,1.44,.40,-.20,.93,.30],from=p.weaponFrom||guard;frame=from.map((v,i)=>v+(hi[i]-v)*gu*gu*(3-2*gu));}
     if(p.state==='stun'||p.state==='dead')frame=[-.50,.86,.14,-.76,.60,.14];
     if(p.state==='roll'){
       const r=rollPose(p),u=r.fold;
@@ -4984,8 +5020,9 @@ const Motion=(()=>{
       const stride=p.gait?.stride||0;
       frame=guard.slice();frame[0]+=.023*stride;frame[1]+=.012*(p.gait?.phase||0);
       frame[2]-=.025*stride;frame[3]-=.037*stride;
+      if(p.sprinting&&p.state==='move'){frame[0]=-.30;frame[1]=1.0;frame[2]=.02;frame[3]=-.45;frame[4]=.28;frame[5]=.85;}
     }
-    if(p.weaponFrom&&!['charge','cast','cut','fault','storm'].includes(p.state)&&t<.14){
+    if(p.weaponFrom&&!['charge','cast','cut','fault','storm','thrust','kick','guard'].includes(p.state)&&t<.14){
       const u=clamp(t/.14);frame=p.weaponFrom.map((n,i)=>n+(frame[i]-n)*u*u*(3-2*u));
     }
     const core=posture(p),raw=vec(frame[0]+core.x,frame[1]+core.y,frame[2]+core.z),shoulder=vec(-.16+core.x,1.45+core.y,.025+core.z);
@@ -5206,18 +5243,18 @@ const Footwork=(()=>{
       if(width<.135){goal.x+=side*c*(.135-width);goal.z-=side*s*(.135-width);}
       goal.z=a.z<=.06?Math.min(.015,goal.z):Math.max(.115,goal.z);
     }
-    const dx=goal.x-f.x,dz=goal.z-f.z,d=Math.hypot(dx,dz),limit=g.heavy?1.03:1.37;
+    const dx=goal.x-f.x,dz=goal.z-f.z,d=Math.hypot(dx,dz),limit=g.heavy?1.03:(a.sprinting?1.75:1.37);
     if(d>limit){goal.x=f.x+dx*limit/d;goal.z=f.z+dz*limit/d;}
     goal.y=g.heavy?terrain(goal.x,goal.z):soleFloor(goal.x,goal.z,a.heading);
     return goal;
   }
   function startStrike(a,reach){
-    const rise=a.rising&&a.state==='cut',cast=a.state==='cast',airborne=a.gait.feet.findIndex(f=>f.swing);
+    const rise=a.rising&&a.state==='cut',cast=a.state==='cast',thrust=a.state==='thrust',airborne=a.gait.feet.findIndex(f=>f.swing);
     const lead=Combat.arts[a.state]&&airborne>=0?airborne:a.state==='storm'||(a.state==='cut'&&a.combo===1&&!rise)?1:0;
     const plan=a.stridePlan={lead,contacts:[],landed:false,rearLanded:false};
     a.gait.feet.forEach((foot,i)=>{
       const sign=i===0?1:-1,isLead=i===lead;
-      const step=isLead?(rise?.59:cast?.48:.46):.13;
+      const step=isLead?(rise?.59:cast?.48:thrust?.74:.46):.13;
       const target=Motion.world(a,{x:(isLead?.225:.19)*sign,y:0,z:reach*step+(isLead?.15:-.18)});
       target.x=clamp(target.x,-7.94,7.94);
       target.z=a.z<=.06?Math.min(.012,target.z):Math.max(.12,target.z);
@@ -5231,7 +5268,7 @@ const Footwork=(()=>{
     for(const [i,f] of g.feet.entries()){
       const lead=i===plan.lead,c=plan.contacts[i];
       const art=Combat.arts[a.state],begin=lead?0:art?art.release+.06:.27;
-      const end=art?(lead?art.release-.12:art.end-.08):lead?(rise?.12:cast?.165:a.combo===2?.150:.11):(cast?.59:.50);
+      const end=art?(lead?art.release-.12:art.end-.08):lead?(a.state==='thrust'?.13:rise?.12:cast?.165:a.combo===2?.150:.11):(a.state==='thrust'?.40:cast?.59:.50);
       const u=clamp((a.t-begin)/(end-begin),0,1),w=smooth(u);
       const stepLength=Math.hypot(c.to.x-c.from.x,c.to.z-c.from.z);
       const lift=Math.sin(Math.PI*u)*Math.min(lead?.175:.093,stepLength*.38);
@@ -5251,7 +5288,7 @@ const Footwork=(()=>{
   }
   function limitStride(a,oldX,oldZ){
     const g=a.gait;
-    if(g.air||a.stridePlan&&['cut','cast','fault','storm'].includes(a.state)||a.state==='vault'||a.state==='roll'||a.y-Combat.level(a.z)>.03)return;
+    if(g.air||a.stridePlan&&['cut','cast','fault','storm','thrust'].includes(a.state)||a.state==='slip'||a.state==='vault'||a.state==='roll'||a.y-Combat.level(a.z)>.03)return;
     let dx=a.x-oldX,dz=a.z-oldZ;
     for(const [i,f]of g.feet.entries()){
       if(f.swing)continue;
@@ -5259,7 +5296,7 @@ const Footwork=(()=>{
       const x=oldX+lateral*Math.cos(a.heading)-f.x,z=oldZ-lateral*Math.sin(a.heading)-f.z;
       const d=Math.hypot(x,z),out=(x*dx+z*dz)/Math.max(.001,d);
       if(out<=0)continue;
-      const limit=a.state==='roll'?.71:.68;
+      const limit=a.state==='roll'?.71:a.sprinting?.88:.68;
       const drag=smooth(clamp((d-limit+.11)/.11,0,1));
       dx-=x/d*out*drag;dz-=z/d*out*drag;
     }
@@ -5338,6 +5375,31 @@ const Footwork=(()=>{
       });
       return;
     }
+    if(!heavy&&a.state==='kick'){
+      // Front-leg push kick: chamber the knee, drive the sole out, snap back.
+      const chamber=smooth(clamp(a.t/.15,0,1)),ext=smooth(clamp((a.t-.15)/.08,0,1)),ret=smooth(clamp((a.t-.32)/.2,0,1));
+      const up=chamber*(1-ret),out=ext*(1-ret);
+      g.feet.forEach((f,i)=>{
+        f.swing=null;
+        if(i!==0){f.pitch=0;f.lift=0;f.heading=a.heading;return;}
+        const w=Motion.world(a,{x:.145,y:0,z:.105+.10*up+.42*out});
+        f.x=w.x;f.z=a.z<=.06?Math.min(.012,w.z):w.z;
+        f.y=Math.max(terrain(f.x,f.z),soleFloor(f.x,f.z,a.heading)+.48*up+.04*out);
+        f.lift=.48*up;f.pitch=.75*out+.18*chamber*(1-out);f.heading=a.heading;
+      });
+      g.balanceX=-.06*up;g.balanceZ=-.02*up;g.phase=0;return;
+    }
+    if(!heavy&&a.state==='slip'){
+      // Quick shuffle: the feet skim just off the stones with the body, trailing foot first.
+      const u=clamp(a.t/.34,0,1),lead=a.slipLead||0;
+      g.feet.forEach((f,i)=>{
+        const home=neutral(a,i,false),uu=clamp((u-(i===lead?0:.12))/.88,0,1),l=Math.sin(Math.PI*uu);
+        f.x=home.x;f.z=home.z;f.y=Math.max(soleFloor(f.x,f.z,a.heading),home.y+.09*l);
+        f.lift=.09*l;f.pitch=.12*l*((a.slipZ||0)>=0?1:-1);f.heading=a.heading;f.swing=null;
+      });
+      if(!g.slipLanded&&u>.85){g.slipLanded=true;g.feet.forEach((f,i)=>events.push({type:'step',who:'p',limb:i,planted:true,weight:.5,x:f.x,y:f.y,z:f.z}));}
+      g.phase=0;g.supportTime=.06;return;
+    }
     if(heavy&&catchLanding(a,g,dt,events))return;
     if(offGround){
       g.airTime+=dt;
@@ -5358,7 +5420,7 @@ const Footwork=(()=>{
       g.air=false;g.airTime=0;g.compression=1;
       events.push({type:'step',who:heavy?'b':'p',weight:1,landing:true});
     }
-    if(!heavy&&a.stridePlan&&['cut','cast','fault','storm'].includes(a.state)){
+    if(!heavy&&a.stridePlan&&['cut','cast','fault','storm','thrust'].includes(a.state)){
       strikeFeet(a,g,events);return;
     }
     let moving=g.feet.findIndex(f=>f.swing);
@@ -5379,7 +5441,7 @@ const Footwork=(()=>{
         if(score>best){best=score;moving=i;}
       }
       if(moving>=0){
-        const f=g.feet[moving],duration=heavy?clamp(.285-speed*.038,.175,.285):clamp(.385-speed*.034,.310,.385);
+        const f=g.feet[moving],duration=heavy?clamp(.285-speed*.038,.175,.285):a.sprinting?clamp(.34-speed*.03,.235,.30):clamp(.385-speed*.034,.310,.385);
         const horizon=heavy?duration*1.54:duration*1.5+.037;
         const dest=aim(a,g,moving,horizon);
         const climb=Math.abs(dest.y-f.y);
@@ -5448,6 +5510,7 @@ const Combat = (() => {
   const smooth = t => t*t*(3-2*t);
   const level = z => z <= .06 ? 0 : -1.16;
   const vaultTime=.76;
+  const moves={thrust:{st:16,end:.62,from:.165,to:.34,damage:36,poise:24},kick:{st:14,end:.55,at:.2,damage:12,poise:46},slip:{st:12,end:.34}};
   const arts={
     fault:{name:'Faultbreaker',st:31,fp:14,release:.53,end:1.04,range:5.4,damage:67,poise:51},
     storm:{name:'Storm Lance',st:26,fp:21,release:.43,end:.89,range:7.3,damage:78,poise:36}
@@ -5467,7 +5530,8 @@ const Combat = (() => {
       time:0, outcome:'', events:[], bolts:[], stones:[], arts:[],shock:null, counter:0,
       p:{x:.24,z:-1.51,y:0,heading:0,vy:0,hp:100,st:100,fp:84,flasks:4,state:'idle',t:0,
         vx:0,vz:0,walk:0,hurt:0,regen:0,charge:0,held:false,auto:false,queued:'',queueTime:0,
-        face:1,rollX:1,rollZ:0,combo:0,lastCut:-5,hit:false,fromY:0},
+        face:1,rollX:1,rollZ:0,combo:0,lastCut:-5,hit:false,fromY:0,
+        sprinting:false,sprintHeld:false,guardHeld:false,riposte:0,riposting:false,guardFlash:0,slipX:0,slipZ:-1,slipLead:0,lunge:1},
       b:{x:-.38,z:3.80,y:-1.16,heading:Math.PI,hp:420,maxHp:420,state:'approach',t:0,wait:1.55,
         walk:0,vx:0,vz:0,hurt:0,poise:0,kind:'cleave',index:0,hit:false,
         startX:0,startZ:0,aimX:0,aimZ:0,guarded:false,face:1}
@@ -5493,6 +5557,10 @@ const Combat = (() => {
     if(s.outcome)return;
     const p=s.p;
     if(what==='release'){p.held=false;return;}
+    if(what==='sprint'){p.sprintHeld=true;return;}
+    if(what==='sprintEnd'){p.sprintHeld=false;return;}
+    if(what==='guardOn'){p.guardHeld=true;if(p.state==='idle'||p.state==='move'){p.queued='';p.held=false;enter(p,'guard');}return;}
+    if(what==='guardOff'){p.guardHeld=false;return;}
     if(what==='cancelCharge'){if(p.state==='charge'&&!p.auto){p.held=false;p.charge=0;enter(p,'idle');}return;}
     if(what==='attack'){
       p.held=true;
@@ -5500,11 +5568,13 @@ const Combat = (() => {
         p.queued='link';p.queueTime=.50;return;
       }
       if(p.state==='roll'&&p.t>=.24){p.queued='rise';p.queueTime=.47;return;}
+      // Parry-riposte: striking right after a clean parry or slip becomes a punishing lunge.
+      if(p.riposte>0&&(p.state==='idle'||p.state==='move'||p.state==='guard')&&p.st>=8){p.riposting=true;p.riposte=0;return action(s,'thrust',mx,mz);}
     }
     const canRollOut=what==='roll'&&((p.state==='cast'&&p.hit&&p.t>=.23)||(p.state==='cut'&&p.t>=.28));
-    if(!['idle','move','charge'].includes(p.state)&&!canRollOut){
+    if(!['idle','move','charge','guard'].includes(p.state)&&!canRollOut){
       if(what==='roll'&&((p.state==='cast'&&p.t>=.12)||(p.state==='cut'&&p.t>=.17))){p.queued=what;p.queueTime=.22;return;}
-      const end=arts[p.state]?.end??({cut:.55,cast:.67,roll:.64,stun:.48,heal:1.06,vault:vaultTime}[p.state]||0);
+      const end=arts[p.state]?.end??({cut:.55,cast:.67,roll:.64,stun:.48,heal:1.06,vault:vaultTime,thrust:moves.thrust.end,kick:moves.kick.end,slip:moves.slip.end}[p.state]||0);
       const buffer=arts[what]?.end ? .32 : .20;
       if(end-p.t<buffer){p.queued=what;p.queueTime=buffer+.05;}
       return;
@@ -5527,6 +5597,23 @@ const Combat = (() => {
         enter(p,'roll');event(s,'roll');
       }
       p.held=false;p.queued='';
+    } else if(what==='thrust'){
+      if(!spend(p,p.riposting?8:moves.thrust.st)){p.riposting=false;return;}
+      p.held=false;p.queued='';p.rising=false;p.linked=false;p.charge=0;
+      p.lunge=p.sprinting?1.35:1;
+      enter(p,'thrust');p.strideReach=clamp((dist(p,s.b)-.91)/1.32,.5,1);
+      Footwork.startStrike(p,p.strideReach);event(s,'lunge');
+    } else if(what==='kick'){
+      if(!spend(p,moves.kick.st))return;
+      p.held=false;p.queued='';p.charge=0;p.riposting=false;enter(p,'kick');event(s,'kick');
+    } else if(what==='slip'){
+      if(!spend(p,moves.slip.st))return;
+      const len=Math.hypot(mx,mz);
+      const dx=len>.12?mx/len:-Math.sin(p.heading),dz=len>.12?mz/len:-Math.cos(p.heading);
+      p.slipDX=dx;p.slipDZ=dz;
+      const l=Motion.local(p,Motion.vec(p.x+dx,p.y,p.z+dz));
+      p.slipX=l.x;p.slipZ=l.z;p.slipLead=l.x>=0?0:1;
+      p.held=false;p.queued='';p.charge=0;p.riposting=false;enter(p,'slip');p.gait.slipLanded=false;event(s,'slip');
     } else if(what==='heal'){
       if(p.flasks>0&&p.hp<100){p.held=false;enter(p,'heal');event(s,'bottle');}
     } else if((what==='attack'||what==='wave')&&p.state!=='charge'&&p.st>=10){
@@ -5543,11 +5630,48 @@ const Combat = (() => {
     if(!b.fierce&&b.hp<=b.maxHp*.5){b.fierce=true;b.counterReady=true;event(s,'surge',{who:'b'});}
     if(b.poise>=94){b.poise=0;enter(b,'stagger');event(s,'break');}
   }
+  function kickStrike(s){
+    const p=s.p,b=s.b,foot=Motion.world(p,Motion.vec(.145,.50,.95));
+    for(const [c,r] of Motion.bossTargets(b)){
+      if(Math.hypot(c.x-foot.x,c.z-foot.z)<r+.55&&Math.abs(c.y-foot.y)<r+1.6){
+        const warned=b.state==='warn',nx=Math.sin(p.heading),nz=Math.cos(p.heading);
+        hurtBoss(s,moves.kick.damage,moves.kick.poise+(warned?32:0),0,Motion.vec(foot.x,foot.y,foot.z));
+        if(!s.outcome&&b.state!=='stagger'&&b.state!=='dead'){
+          const bx=b.x,bz=b.z;
+          b.x=clamp(b.x+nx*.55,-7.8,7.8);b.z=clamp(b.z+nz*.55,.58,6.5);
+          if(b.state==='attack'){b.contactX=(b.contactX||0)+b.x-bx;b.contactZ=(b.contactZ||0)+b.z-bz;}
+        }
+        p.fp=Math.min(100,p.fp+4);event(s,'kickHit');return true;
+      }
+    }
+    return false;
+  }
   function hurtPlayer(s,damage){
     const p=s.p;
     if(s.outcome)return;
-    if((p.state==='roll'&&p.t>=.055&&p.t<.46)||(p.state==='vault'&&p.t<.32)){
-      p.fp=Math.min(100,p.fp+7);event(s,'evade');return;
+    if((p.state==='roll'&&p.t>=.055&&p.t<.46)||(p.state==='vault'&&p.t<.32)||(p.state==='slip'&&p.t>=.03&&p.t<.23)){
+      p.fp=Math.min(100,p.fp+7);if(p.state==='slip')p.riposte=.75;event(s,'evade');return;
+    }
+    if(p.state==='guard'){
+      const b=s.b;
+      if(p.t<.26){
+        // Parry: the edge catches the strike. Melee attacks are knocked off balance.
+        p.fp=Math.min(100,p.fp+10);p.st=Math.min(100,p.st+16);p.riposte=.9;p.guardFlash=.3;
+        event(s,'parry');
+        if(b.hp>0){
+          if(b.state==='attack'&&b.kind!=='hurl'){b.poise=0;enter(b,'stagger');event(s,'break');}
+          else b.poise+=40;
+        }
+        return;
+      }
+      const cost=damage*1.15+8;
+      p.guardFlash=.2;
+      if(p.st>=cost){
+        p.st-=cost;p.regen=.7;event(s,'block');
+        const n=Math.max(.001,dist(p,b));p.vx+=(p.x-b.x)/n*1.6;p.vz+=(p.z-b.z)/n*1.6;
+        return;
+      }
+      p.st=0;p.regen=1;damage=Math.ceil(damage*.6);event(s,'guardBreak');
     }
     if(p.state==='stun'&&p.t<.22)return;
     const n=Math.max(.001,dist(p,s.b));p.recoilX=(p.x-s.b.x)/n;p.recoilZ=(p.z-s.b.z)/n;
@@ -5610,6 +5734,7 @@ const Combat = (() => {
   function player(s,dt,input) {
     const {p,b}=s,oldX=p.x,oldZ=p.z; p.t+=dt;p.hurt=Math.max(0,p.hurt-dt);
     p.regen=Math.max(0,p.regen-dt);p.queueTime-=dt;if(p.queueTime<=0)p.queued='';
+    p.riposte=Math.max(0,(p.riposte||0)-dt);p.guardFlash=Math.max(0,(p.guardFlash||0)-dt);
     const mag=Math.hypot(input.x,input.z), mx=input.x/Math.max(1,mag),mz=input.z/Math.max(1,mag);
     if(p.queued==='link'&&p.state==='cut'&&p.t>=.302){
       if(p.t>=.47&&p.held){p.queued='attack';p.queueTime=.28;}
@@ -5627,12 +5752,16 @@ const Combat = (() => {
     }
     let tx=0,tz=0;
     const neutral=p.state==='move'||p.state==='idle';
+    if(!neutral)p.sprinting=false;
     if(neutral){
       p.state=mag>.05?'move':'idle';
       const forward=(mx*Math.sin(p.heading)+mz*Math.cos(p.heading))/Math.max(.001,Math.hypot(mx,mz));
-      const speed=1.08+.56*Math.max(0,forward)-.06*Math.max(0,-forward);
+      p.sprinting=p.sprintHeld&&mag>.2&&p.st>3;
+      let speed=1.08+.56*Math.max(0,forward)-.06*Math.max(0,-forward);
+      if(p.sprinting){speed=2.45+.4*Math.max(0,forward);p.st=Math.max(0,p.st-9*dt);p.regen=.5;}
       tx=mx*speed;tz=mz*speed;
       if(p.queued){const q=p.queued,held=p.held;p.queued='';action(s,q,mx,mz);if(q==='attack')p.held=held;}
+      if(p.guardHeld&&(p.state==='idle'||p.state==='move'))enter(p,'guard');
     } else if(p.state==='charge'){
       p.charge=Math.min(1.12,p.charge+dt);tx=mx*.58;tz=mz*.58;
       if((!p.held&&!p.auto)||(p.auto&&p.charge>=.79)||p.charge>=1.12)release(s);
@@ -5665,6 +5794,37 @@ const Combat = (() => {
         enter(p,'cut');p.linked=false;p.rising=true;p.combo=0;p.strideReach=1;p.lastCut=s.time;
         Footwork.startStrike(p,1);event(s,'cut',{combo:0,rising:true});
       }else if(p.t>.64){if(p.queued==='rise')p.queued='';enter(p,'idle');}
+    } else if(p.state==='thrust'){
+      const m=moves.thrust;
+      if(!p.hit&&p.t>=m.from&&p.t<=m.to){
+        const blade=Motion.sword(p);
+        const contact=Motion.bladeContact(p.previousEdge,blade,Motion.bossTargets(b),.075);
+        p.previousEdge=blade;
+        if(contact){
+          p.hit=true;const broken=b.state==='stagger',bonus=p.riposting?1.55:1;
+          hurtBoss(s,Math.round((broken?54:m.damage)*bonus*(p.lunge>1?1.2:1)),m.poise+(p.riposting?20:0),0,contact);
+          p.fp=Math.min(100,p.fp+6);
+        }
+      }
+      if(!p.passedBlade&&p.t>=.17){
+        p.passedBlade=true;const blade=Motion.sword(p),next=Motion.sword({...p,t:p.t+.014});
+        event(s,'bladePass',{...blade.worldTip,velocity:Motion.mul(Motion.sub(next.worldTip,blade.worldTip),1/.014),who:'p',combo:0,rising:false,magic:false});
+      }
+      const u=clamp((p.t-.07)/.22,0,1),drive=(p.lunge||1)*4.4*Math.sin(Math.PI*u)**2*(p.strideReach||1);
+      tx=Math.sin(p.heading)*drive;tz=Math.cos(p.heading)*drive;
+      if(p.t>=m.end){p.riposting=false;enter(p,'idle');}
+    } else if(p.state==='kick'){
+      if(!p.hit&&p.t>=moves.kick.at){p.hit=true;kickStrike(s);}
+      const drive=2.0*Math.sin(Math.PI*clamp((p.t-.08)/.24,0,1))**2;
+      tx=Math.sin(p.heading)*drive;tz=Math.cos(p.heading)*drive;
+      if(p.t>=moves.kick.end)enter(p,'idle');
+    } else if(p.state==='slip'){
+      const speed=10*smooth(clamp((p.t-.01)/.06,0,1))*(1-smooth(clamp((p.t-.17)/.17,0,1)));
+      tx=(p.slipDX||0)*speed;tz=(p.slipDZ||0)*speed;
+      if(p.t>=moves.slip.end)enter(p,'idle');
+    } else if(p.state==='guard'){
+      tx=mx*.62;tz=mz*.62;
+      if(!p.guardHeld)enter(p,'idle');
     } else if(p.state==='vault'){
       const u=clamp(p.t/vaultTime,0,1),turn=clamp(u/.47,0,1);
       p.heading=p.fromHeading+Math.atan2(Math.sin(Math.PI-p.fromHeading),Math.cos(Math.PI-p.fromHeading))*smooth(turn);
@@ -5692,7 +5852,7 @@ const Combat = (() => {
       tx+=Math.sin(p.heading)*transfer;tz+=Math.cos(p.heading)*transfer;
     }
     const dvx=tx-p.vx,dvz=tz-p.vz,delta=Math.hypot(dvx,dvz);
-    if(p.state==='move'||p.state==='idle'||p.state==='charge'){
+    if(p.state==='move'||p.state==='idle'||p.state==='charge'||p.state==='guard'){
       // Acceleration itself is eased, so a step starts and stops without a hard edge.
       const reversing=delta>.001&&p.vx*dvx+p.vz*dvz<0;
       const gain=reversing?13:10,limit=reversing?15:11.5;
@@ -5704,13 +5864,13 @@ const Combat = (() => {
       if(Math.hypot(tx,tz)<.001&&Math.hypot(p.vx,p.vz)<.03){p.vx=p.vz=p.ax=p.az=0;}
     }else{
       p.ax=p.az=0;
-      const acceleration=p.state==='roll'?58:p.state==='cut'||p.state==='cast'?24:(delta>.001&&p.vx*dvx+p.vz*dvz<0?13:8.6);
+      const acceleration=p.state==='roll'?58:p.state==='slip'?64:p.state==='cut'||p.state==='cast'||p.state==='thrust'?24:(delta>.001&&p.vx*dvx+p.vz*dvz<0?13:8.6);
       const fraction=Math.min(1,acceleration*dt/Math.max(.00001,delta));
       p.vx+=dvx*fraction;p.vz+=dvz*fraction;
     }
     p.x=clamp(p.x+p.vx*dt,-7.8,7.8);
     let nextZ=clamp(p.z+p.vz*dt,-3.7,6.5);
-    if((p.state==='cut'||p.state==='cast'||arts[p.state])&&p.z<=.06&&nextZ>.06){nextZ=.06;p.vz=0;}
+    if((p.state==='cut'||p.state==='cast'||p.state==='thrust'||p.state==='kick'||p.state==='slip'||arts[p.state])&&p.z<=.06&&nextZ>.06){nextZ=.06;p.vz=0;}
     if(p.z>.06&&nextZ<=.06&&p.y<-.3&&p.state!=='vault'){
       if(p.x< -6.3){vault(p);}
       else nextZ=.061;
@@ -5871,8 +6031,10 @@ const Combat = (() => {
       a.turnRate=(a.turnRate||0)+clamp(desired-(a.turnRate||0),-speed*5*dt,speed*5*dt);
       a.heading+=a.turnRate*dt;
     }
-    if(['idle','move','charge'].includes(s.p.state))turn(s.p,s.b,3.9);else s.p.turnRate=0;
-    if(s.b.state==='approach'||s.b.state==='bound'||s.b.state==='warn'&&s.b.t<patterns[s.b.kind].warn*.63)turn(s.b,s.p,2.55);else s.b.turnRate=0;
+    if(['idle','move','charge','guard'].includes(s.p.state))turn(s.p,s.b,3.9);
+    else{const r=s.p.turnRate||0;if(Math.abs(r)>.002&&s.p.state!=='vault'&&s.p.state!=='roll'){s.p.heading+=r*dt;s.p.turnRate=r*Math.exp(-dt*30);}else s.p.turnRate=0;}
+    if(s.b.state==='approach'||s.b.state==='bound'||s.b.state==='warn'&&s.b.t<patterns[s.b.kind].warn*.63)turn(s.b,s.p,2.55);
+    else{const r=s.b.turnRate||0;if(Math.abs(r)>.002&&s.b.state!=='attack'&&s.b.state!=='dead'&&s.b.state!=='stagger'){s.b.heading+=r*dt;s.b.turnRate=r*Math.exp(-dt*30);}else s.b.turnRate=0;}
     if(s.b.state!=='attack')s.b.groundHit=false;
     player(s,dt,input);
     if(!s.outcome)boss(s,dt);
@@ -7058,6 +7220,10 @@ class BattleEffects {
    }
    else if(e.type==='heal'||e.type==='evade'){
      for(let i=0;i<30;i++){const a=i*2.4;this.dot(V(s.p.x+Math.cos(a)*.25,s.p.y+.45+(i%8)*.09,s.p.z+Math.sin(a)*.25),V(Math.cos(a)*.1,.58,Math.sin(a)*.1),.7,.035,e.type==='heal'?[1,.74,.29]:[.69,.87,1],.88,1);}}
+   else if(e.type==='parry'||e.type==='block'){
+     const h=s.p.heading,n=e.type==='parry'?22:9;
+     for(let i=0;i<n;i++){const a=i*2.4+h;this.dot(V(s.p.x+Math.sin(h)*.55,s.p.y+1.3,s.p.z+Math.cos(h)*.55),V(Math.cos(a)*1.4,.5+(i%5)*.3,Math.sin(a)*1.4),.34,.03,[1,.88,.55],.9,1);}
+   }
  }
  crescent(){
    if(this.waveTemplate){
@@ -7114,7 +7280,7 @@ class BattleEffects {
   const rolling=s.p.state==='roll'||s.p.state==='dead'||s.p.state==='vault',charge=s.p.state==='charge'?s.p.charge:0;
   const actual=stage.hero.sword.obj,base=actual.localToWorld(new T.Vector3(0,.20,0)),tip=actual.localToWorld(new T.Vector3(0,1.55,0));
   const art=Combat.arts[s.p.state],fire=s.p.state==='fault',energy=Motion.artEnvelope(s.p),palette=art?(fire?-1:1):0;
-  const live=dt>0&&(art?(s.p.t>art.release-.16&&s.p.t<art.release+.12):(['cast','cut'].includes(s.p.state)&&s.p.t>.075&&s.p.t<.42));
+  const live=dt>0&&(art?(s.p.t>art.release-.16&&s.p.t<art.release+.12):(['cast','cut','thrust'].includes(s.p.state)&&s.p.t>.075&&s.p.t<.42));
   for(const q of this.trails)q.t+=dt;this.trails=this.trails.filter(q=>q.t<.145);
   if(live){
     const span=Math.min(s.p.t,dt),steps=Math.max(1,Math.ceil(span*100));
@@ -8086,6 +8252,13 @@ class ArenaAudio {
         hit('chain',.36,.26,1.13,0,{offset:.11,lowpass:4200});
         rush(850,310,.25,.41,.045);break;
       case 'evade':rush(1840,310,.35,.51,.017,0,-.45);hit('bell',.24,.49,1.5,.035);break;
+      case 'slip':rush(1500,420,.22,.34,.02);break;
+      case 'lunge':rush(2300,520,.26,.46,.012);hit('chain',.2,.18,1.3,0,{offset:.06});break;
+      case 'kick':hit('skin',.5,.2,.9);rush(900,300,.2,.3,.02);break;
+      case 'kickHit':hit('anvil',.45,.4,1.4);break;
+      case 'parry':hit('iron',.8,.5,1.7);hit('bell',.5,.7,1.9,.02);rush(2600,600,.3,.5,.01);break;
+      case 'block':hit('iron',.5,.3,1.3);break;
+      case 'guardBreak':hit('gong',.5,.8,1.2);break;
       case 'bottle':hit('iron',.15,.12,1.84);break;
       case 'heal':hit('bell',.36,1.05,.75);hit('bell',.21,.90,1.125,.14);break;
       case 'victory':case 'defeat':this.score.finish(e.type==='victory');break;
@@ -8122,7 +8295,7 @@ class ArenaAudio {
   function settings(){
     $('#audio').textContent=snd.enabled?'Sound on':'Sound off';$('#audio').setAttribute('aria-pressed',String(snd.enabled));
     $('#motion').textContent=reduced?'Motion reduced':'Motion full';$('#motion').setAttribute('aria-pressed',String(reduced));
-    $('#fullscreen').textContent=document.fullscreenElement?'Exit full screen':'Full screen';
+    $('#fullscreen').textContent=(document.fullscreenElement||document.webkitFullscreenElement)?'Exit full screen':'Full screen';
   }
   const framePeriod=1000/60;
   const fpsReadout=$('#fps');
@@ -8161,7 +8334,7 @@ class ArenaAudio {
     return scene.move(x,z);
   }
   function clearInput(){
-    keys.clear();s.p.held=false;stick.x=stick.z=pad.x=pad.z=0;look.x=look.y=0;$('.pad i').style.transform='';pad.buttons=[];
+    keys.clear();s.p.held=false;s.p.sprintHeld=s.p.guardHeld=false;stick.x=stick.z=pad.x=pad.z=0;look.x=look.y=0;$('.pad i').style.transform='';pad.buttons=[];
   }
   function command(k){if(state==='playing'&&!s.outcome){const v=input();Combat.action(s,k,v.x,v.z);}}
   function say(txt,sec=1.05){$('#cue').textContent=txt;$('#cue').style.opacity='1';cueTime=sec;}
@@ -8200,6 +8373,12 @@ class ArenaAudio {
     $('.foebar i').style.transform='scaleX('+shownHealth/s.b.maxHp+')';
     $('#damage').style.opacity=String(Combat.clamp((1.09-since)*3.8,0,1));
     $('#flask').textContent=s.p.flasks;
+    if(!touch.hidden){
+      const p=s.p;
+      for(const [k,off] of [['fault',p.fp<Combat.arts.fault.fp||p.st<Combat.arts.fault.st],['storm',p.fp<Combat.arts.storm.fp||p.st<Combat.arts.storm.st],['roll',p.st<22],['thrust',p.st<16],['kick',p.st<14],['slip',p.st<12],['heal',p.flasks<=0]]){
+        const el=touchBtn[k];if(el&&el._dim!==off){el._dim=off;el.classList.toggle('dim',off);}
+      }
+    }
     const beast=scene.screen.guardian;if(beast){
       const pct=(v,n)=>100*v/n+'%';
       $('#foe').style.left=pct(beast.bar[0],Stage.W);$('#foe').style.top=pct(Math.max(30,beast.bar[1]),Stage.H);
@@ -8215,6 +8394,9 @@ class ArenaAudio {
     if(e.type==='break'||e.type==='impact'){
       impactHold=Math.max(impactHold,e.type==='break'?.083:e.wavePower>0?.046:.034);
     }
+    if(e.type==='parry'){say('Parried — strike now',1);impactHold=Math.max(impactHold,.06);}
+    if(e.type==='block')say('Blocked',.5);
+    if(e.type==='guardBreak')say('Guard broken',.9);
     if(e.type==='impact'&&e.who==='b'){lastWound=s.time;$('#damage').textContent=String(e.damage);}
     if(e.type==='surge')say('The guardian changes stance',1.3);
     if(e.type==='break')say('Stance broken');
@@ -8236,11 +8418,22 @@ class ArenaAudio {
       if(newButtons[11]&&!was[11])scene.recenter(s);
       for(const [i,k]of [[2,'attack'],[3,'wave'],[1,'roll'],[0,'heal'],[4,'fault'],[5,'storm']])if(newButtons[i]&&!was[i])command(k);
       if(!newButtons[2]&&was[2])command('release');
+      if(newButtons[7]&&!was[7])command('thrust');
+      if(newButtons[12]&&!was[12])command('kick');
+      if(newButtons[13]&&!was[13])command('slip');
+      if(newButtons[6]&&!was[6])command('guardOn');if(!newButtons[6]&&was[6])command('guardOff');
+      if(newButtons[10]&&!was[10])command('sprint');if(!newButtons[10]&&was[10])command('sprintEnd');
     }
     pad.buttons=newButtons;
   }
+  let dtAvg=1/60;
   function frame(now){
-    const elapsed=last?Math.max(0,(now-last)/1000):0,dt=Math.min(.12,elapsed);last=now;pollPad();
+    const elapsed=last?Math.max(0,(now-last)/1000):0,rawDt=Math.min(.12,elapsed);last=now;pollPad();
+    // rAF timestamps jitter by a millisecond or two; feeding that straight into the
+    // simulation shows up as micro-stutter. Blend toward a running average (unbiased,
+    // so game time still tracks real time) and pass real hitches through untouched.
+    let dt=rawDt;
+    if(rawDt>0&&rawDt<.05){dtAvg+=(rawDt-dtAvg)*.12;dt=rawDt*.3+dtAvg*.7;}else if(rawDt>=.05)dtAvg=1/60;
     if(state==='playing'){
       scene.orbit(dt*((keys.has('KeyE')?1:0)-(keys.has('KeyQ')?1:0)+look.x)*2.12,-look.y*dt*1.26);
       const hold=reduced?0:Math.min(dt,impactHold);
@@ -8265,7 +8458,7 @@ class ArenaAudio {
     }
     raf=requestAnimationFrame(frame);
   }
-  const keyboard={KeyJ:'attack',KeyK:'wave',KeyU:'fault',KeyI:'storm',Space:'roll',KeyF:'heal'};
+  const keyboard={KeyJ:'attack',KeyK:'wave',KeyU:'fault',KeyI:'storm',Space:'roll',KeyF:'heal',KeyL:'thrust',KeyG:'kick',KeyV:'slip'};
   document.addEventListener('keydown',e=>{
     if(e.code==='Escape'||e.code==='KeyP'){
       if(!e.repeat){e.preventDefault();pause();}return;
@@ -8274,11 +8467,13 @@ class ArenaAudio {
       if(ready&&e.code==='Enter'&&help.hidden&&!e.repeat&&(e.target===document.body||e.target===ground)){e.preventDefault();begin();}return;
     }
     if(e.code==='KeyC'){e.preventDefault();scene.recenter(s);return;}
-    if(keyboard[e.code]||e.code.startsWith('Arrow')||['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE'].includes(e.code)){
+    if(keyboard[e.code]||e.code.startsWith('Arrow')||['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','ShiftLeft','ShiftRight','KeyH'].includes(e.code)){
       e.preventDefault();keys.add(e.code);if(!e.repeat&&keyboard[e.code])command(keyboard[e.code]);
+      if(!e.repeat&&(e.code==='ShiftLeft'||e.code==='ShiftRight'))command('sprint');
+      if(!e.repeat&&e.code==='KeyH')command('guardOn');
     }
   });
-  document.addEventListener('keyup',e=>{keys.delete(e.code);if(e.code==='KeyJ')command('release');});
+  document.addEventListener('keyup',e=>{keys.delete(e.code);if(e.code==='KeyJ')command('release');if(e.code==='ShiftLeft'||e.code==='ShiftRight')command('sprintEnd');if(e.code==='KeyH')command('guardOff');});
   ground.addEventListener('contextmenu',e=>e.preventDefault());
   let drag=null;
   function stopDrag(){if(drag){clearTimeout(drag.timer);drag=null;}}
@@ -8302,22 +8497,70 @@ class ArenaAudio {
   ground.addEventListener('lostpointercapture',()=>{if(drag?.charged)command('release');stopDrag();});
   ground.addEventListener('wheel',e=>{if(state==='playing'){e.preventDefault();scene.zoom(Math.sign(e.deltaY)*.32);}},{passive:false});
   $('#centerCam').addEventListener('click',()=>scene.recenter(s));
-  const joy=$('.pad');let pointer=null;
-  function readStick(e){const rect=joy.getBoundingClientRect(),x=(e.clientX-rect.left-rect.width*.5)/(rect.width*.39),z=-(e.clientY-rect.top-rect.height*.5)/(rect.height*.39),n=Math.max(1,Math.hypot(x,z));
-    stick.x=x/n;stick.z=z/n;$('.pad i').style.transform='translate('+stick.x*63+'%,'+(-stick.z*63)+'%)';}
-  joy.addEventListener('pointerdown',e=>{if(pointer!==null)return;pointer=e.pointerId;joy.setPointerCapture(pointer);readStick(e);});
-  joy.addEventListener('pointermove',e=>{if(pointer===e.pointerId)readStick(e);});
-  joy.addEventListener('lostpointercapture',()=>{pointer=null;stick.x=stick.z=0;$('.pad i').style.transform='';});
+  const touchBtn={};for(const el of document.querySelectorAll('#buttons [data-do]'))touchBtn[el.dataset.do]=el;
+  const joy=$('.pad'),zone=$('#moveZone'),knob=$('.pad i');let pointer=null,origin={x:0,y:0};
+  // Floating thumbstick: the base appears where the thumb lands and the knob is
+  // measured from there, so no one has to hit a fixed circle without looking.
+  function placeStick(e){
+    const r=$('#touch').getBoundingClientRect(),half=joy.offsetWidth/2;
+    const cx=Math.min(Math.max(e.clientX,r.left+half),r.right-half),cy=Math.min(Math.max(e.clientY,half),innerHeight-half);
+    origin={x:cx,y:cy};joy.style.left=(cx-r.left-half)+'px';joy.style.top=(cy-r.top-half)+'px';joy.style.bottom='auto';joy.classList.add('on');
+  }
+  function readStick(e){
+    const radius=joy.offsetWidth*.28;let dx=e.clientX-origin.x,dy=e.clientY-origin.y;const d=Math.hypot(dx,dy);
+    if(d>radius){dx*=radius/d;dy*=radius/d;}
+    const m=Math.min(1,d/radius),dead=.14,k=m<dead?0:(m-dead)/(1-dead);
+    stick.x=d>0?dx/Math.max(.001,Math.hypot(dx,dy))*k:0;stick.z=d>0?-dy/Math.max(.001,Math.hypot(dx,dy))*k:0;
+    knob.style.transform='translate('+dx+'px,'+dy+'px)';
+  }
+  function releaseStick(){pointer=null;stick.x=stick.z=0;knob.style.transform='';joy.style.left=joy.style.top=joy.style.bottom='';joy.classList.remove('on');}
+  zone.addEventListener('pointerdown',e=>{
+    if(pointer!==null&&zone.hasPointerCapture(pointer))return;
+    e.preventDefault();pointer=e.pointerId;zone.setPointerCapture(pointer);placeStick(e);readStick(e);
+  });
+  zone.addEventListener('pointermove',e=>{if(pointer===e.pointerId)readStick(e);});
+  zone.addEventListener('pointerup',e=>{if(pointer===e.pointerId)releaseStick();});
+  zone.addEventListener('pointercancel',e=>{if(pointer===e.pointerId)releaseStick();});
+  zone.addEventListener('lostpointercapture',releaseStick);
   for(const b of document.querySelectorAll('[data-do]')){
-    b.addEventListener('pointerdown',e=>{e.preventDefault();b.setPointerCapture(e.pointerId);command(b.dataset.do);});
-    b.addEventListener('lostpointercapture',()=>{if(b.dataset.do==='attack')command('release');});
+    const holdOn={guard:'guardOn',sprint:'sprint'},holdOff={guard:'guardOff',sprint:'sprintEnd'};
+    const up=()=>{b.classList.remove('down');if(holdOff[b.dataset.do])command(holdOff[b.dataset.do]);};
+    b.addEventListener('pointerdown',e=>{e.preventDefault();b.setPointerCapture(e.pointerId);b.classList.add('down');
+      if(e.pointerType==='touch'&&navigator.vibrate)navigator.vibrate(b.dataset.do==='attack'?7:11);command(holdOn[b.dataset.do]||b.dataset.do);});
+    b.addEventListener('pointerup',up);b.addEventListener('pointercancel',up);
+    b.addEventListener('contextmenu',e=>e.preventDefault());
+    b.addEventListener('lostpointercapture',()=>{up();if(b.dataset.do==='attack')command('release');});
   }
   primary.addEventListener('click',begin);$('#restart').addEventListener('click',restart);$('#pause').addEventListener('click',pause);
   $('#guide').addEventListener('click',()=>{help.hidden=false;$('#closeHelp').focus({preventScroll:true});});$('#closeHelp').addEventListener('click',()=>{help.hidden=true;$('#guide').focus({preventScroll:true});});
   $('#audio').addEventListener('click',()=>{snd.enabled=!snd.enabled;setPref('audio',snd.enabled);if(!snd.enabled)snd.quiet();else if(state==='playing')snd.start();settings();});
   $('#motion').addEventListener('click',()=>{reduced=!reduced;setPref('motion',reduced);settings();});
-  $('#fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{}});document.addEventListener('fullscreenchange',settings);
-  if(!document.documentElement.requestFullscreen)$('#fullscreen').hidden=true;
+  {
+    const root=document.documentElement,fsOn=()=>document.fullscreenElement||document.webkitFullscreenElement;
+    const request=root.requestFullscreen||root.webkitRequestFullscreen,exit=document.exitFullscreen||document.webkitExitFullscreen;
+    const standalone=navigator.standalone===true||matchMedia('(display-mode: standalone)').matches||matchMedia('(display-mode: fullscreen)').matches;
+    const toast=document.createElement('div');toast.id='fstoast';toast.setAttribute('role','status');$('#stage').appendChild(toast);
+    let toastTimer=0;
+    function tell(text){toast.textContent=text;toast.classList.add('on');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('on'),4800);}
+    async function toggle(){
+      try{
+        if(fsOn()){await exit.call(document);return;}
+        if(request){
+          await request.call(root,{navigationUI:'hide'});
+          // Phones: the arena is landscape, so lock it once the page is full screen.
+          try{await screen.orientation?.lock?.('landscape');}catch{}
+        }else if(standalone){tell('Already full screen.');}
+        else{
+          // iPhone Safari offers no full-screen API for web pages.
+          tell('iPhone: tap Share, then Add to Home Screen, and open the game from there for full screen. Rotating to landscape also hides most of the browser bars.');
+        }
+      }catch{tell('Full screen was blocked by the browser.');}
+    }
+    for(const b of document.querySelectorAll('#fullscreen,#fullscreen2'))b.addEventListener('click',e=>{e.stopPropagation();toggle();});
+    const onChange=()=>{settings();if(!fsOn())try{screen.orientation?.unlock?.();}catch{}};
+    document.addEventListener('fullscreenchange',onChange);document.addEventListener('webkitfullscreenchange',onChange);
+    if(standalone){for(const b of document.querySelectorAll('#fullscreen,#fullscreen2'))b.hidden=true;}
+  }
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&state==='playing'&&!s.outcome)pause();last=performance.now();});
   window.addEventListener('blur',()=>{if(state==='playing'&&!s.outcome)pause();});
   ground.addEventListener('webglcontextlost',e=>{e.preventDefault();if(state==='playing')pause();cancelAnimationFrame(raf);});
