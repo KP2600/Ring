@@ -56,7 +56,28 @@ body.touching .gear{bottom:33%}#banner{position:absolute;left:0;right:0;top:40%;
 @media(max-width:650px) and (orientation:portrait){#stage{overflow:visible}#panel{width:56%}#overlay{padding:4%}#description{font-size:10px;margin:0 0 .6em}h1{font-size:30px}.options{bottom:4%;right:2%;gap:3px}.options button{font-size:9px;padding:4px}.mainbtn{padding:.38em .6em}#touch{--u:max(5.2px,1.45cqw)}#moveZone{top:100%;bottom:auto;height:100vh;width:50%}.pad{top:calc(100% + 24px);bottom:auto;left:4%}#buttons{top:calc(100% + 14px);bottom:auto;right:3%}.playtools{right:2%;top:3%}.round{min-width:36px;min-height:32px}body.touching .gear{bottom:5%}#help{padding:2%;align-content:start}#help>div{width:95%}.keygrid{gap:0 12px}.keygrid div{padding:.2em 0}}
 @media(max-height:480px) and (orientation:landscape){#description{margin-bottom:.8em}.keygrid div{padding:.25em 0}#help p{margin:.2em 0 .4em}.options{bottom:3%}}
 .mixer{display:flex;flex-wrap:wrap;gap:.5em 2em;margin:.8em 0 1.15em;font-size:clamp(11px,1.1cqw,17px)}.mixer label{display:flex;align-items:center;gap:.65em}.mixer input{accent-color:#b79f72;width:clamp(55px,8cqw,125px)}.mixer output{font:normal .8em system-ui;color:#c5b89c;min-width:3ch}@media(max-height:550px){#help{align-content:start}}
-#fstoast{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);max-width:86%;padding:.7em 1em;border:1px solid #c3b79b80;background:#101511ee;color:var(--ivory);font:500 clamp(11px,1.5cqw,15px)/1.35 system-ui,sans-serif;text-align:center;z-index:60;pointer-events:none;opacity:0;transition:opacity .25s}#fstoast.on{opacity:1}#fps{align-self:center;padding:.32em .52em;border:1px solid #80765d55;background:#101511a6;color:#ddd4bb;font:500 clamp(9px,.82cqw,13px)/1.2 system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}</style></head>
+#fstoast{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);max-width:86%;padding:.7em 1em;border:1px solid #c3b79b80;background:#101511ee;color:var(--ivory);font:500 clamp(11px,1.5cqw,15px)/1.35 system-ui,sans-serif;text-align:center;z-index:60;pointer-events:none;opacity:0;transition:opacity .25s}#fstoast.on{opacity:1}#fps{align-self:center;padding:.32em .52em;border:1px solid #80765d55;background:#101511a6;color:#ddd4bb;font:500 clamp(9px,.82cqw,13px)/1.2 system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}
+/* ---- refined touch controls ---- */
+#buttons [data-do="attack"]{--c:#e4cf94}#buttons [data-do="roll"]{--c:#cfd6d4}#buttons [data-do="wave"]{--c:#8fb4c8}#buttons [data-do="fault"]{--c:#c89c6c}#buttons [data-do="storm"]{--c:#ab95c6}#buttons [data-do="thrust"]{--c:#d6c28a}#buttons [data-do="kick"]{--c:#c9a59a}#buttons [data-do="slip"]{--c:#a9c9b8}#buttons [data-do="guard"]{--c:#b8c4d6}#buttons [data-do="sprint"]{--c:#d8d0a8}#buttons [data-do="heal"]{--c:#9bbf86}
+#buttons button{border-width:1.5px;border-style:solid;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:max(1px,calc(var(--u)*.18));
+ background:radial-gradient(circle at 50% 24%,color-mix(in srgb,var(--c) 20%,#2a2d25) 0,#171912 58%,#0a0c08 100%);color:var(--c);
+ box-shadow:0 4px 12px #000b,inset 0 1px 0 #ffffff2e,inset 0 0 0 3px #0b0d09,inset 0 0 0 4px color-mix(in srgb,var(--c) 40%,transparent),inset 0 -9px 16px #0009;
+ -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+#buttons button::before{content:'';position:absolute;inset:max(-5px,calc(var(--u)*-.55));border-radius:50%;border:1px dashed color-mix(in srgb,var(--c) 30%,transparent);pointer-events:none}
+#buttons button svg{width:44%;height:44%;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 4px color-mix(in srgb,var(--c) 55%,transparent));pointer-events:none}
+#buttons button span{font:600 max(7px,calc(var(--u)*1.02))/1 Georgia,serif;letter-spacing:.16em;text-transform:uppercase;color:#e9e0c8;opacity:.82;pointer-events:none;margin-right:-.16em}
+#buttons [data-do="attack"]{box-shadow:0 5px 16px #000c,0 0 20px color-mix(in srgb,var(--c) 26%,transparent),inset 0 1px 0 #ffffff38,inset 0 0 0 3px #0b0d09,inset 0 0 0 4px color-mix(in srgb,var(--c) 55%,transparent),inset 0 0 0 8px #0b0d0966,inset 0 -10px 18px #0009}
+#buttons [data-do="attack"] svg{width:46%;height:46%;stroke-width:1.9}
+#buttons [data-do="attack"] span{font-size:max(8px,calc(var(--u)*1.2))}
+#buttons [data-do="attack"]::before{border-style:solid;border-color:color-mix(in srgb,var(--c) 38%,transparent)}
+#buttons button.down,#buttons button:active{transform:scale(.92);color:#fff7dd;background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--c) 62%,#2c2616) 0,color-mix(in srgb,var(--c) 22%,#181409) 72%);box-shadow:0 0 18px color-mix(in srgb,var(--c) 70%,transparent),inset 0 0 0 3px #0b0d09,inset 0 0 0 4px var(--c),inset 0 0 14px #0006}
+#buttons button.dim{opacity:.42;filter:saturate(.25)}
+.pad{background:radial-gradient(circle,#1b1e1a40 0,#10120d9c 72%);box-shadow:0 4px 14px #0009,0 0 0 1px #0007,inset 0 0 0 5px #0b0d0a8c,inset 0 0 0 6px #cdbf9535;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.pad::before{content:'';position:absolute;inset:7%;border-radius:50%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23e0d3a8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' opacity='.7'%3E%3Cpath d='M43 14l7-6 7 6M43 86l7 6 7-6M14 43l-6 7 6 7M86 43l6 7-6 7'/%3E%3C/svg%3E") center/100% 100% no-repeat;pointer-events:none}
+.pad::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px dashed #cdbf9538;pointer-events:none}
+.pad i{width:42%;height:42%;border:1.5px solid #f2e8c8c0;background:radial-gradient(circle at 38% 30%,#efe3bd 0,#a89a74 45%,#5f5640 100%);box-shadow:0 3px 8px #000a,inset 0 0 0 4px #0003,inset 0 -4px 8px #0005;position:relative}
+.pad i::after{content:'';position:absolute;inset:30%;border-radius:50%;border:1px solid #2b261a77;background:radial-gradient(circle at 40% 35%,#ffffff55,transparent 70%)}
+</style></head>
 <body><main id="stage" aria-label="Cinder Colossus game">
 <canvas id="ground" class="layer" aria-label="Courtyard combat arena"></canvas><div class="layer lens"></div>
 <div id="hud" hidden>
@@ -65,15 +86,15 @@ body.touching .gear{bottom:33%}#banner{position:absolute;left:0;right:0;top:40%;
  <div class="gear"><div class="slot" aria-label="Healing flasks"><svg viewBox="0 0 50 65" aria-hidden="true"><defs><radialGradient id="glass" cx=".4" cy=".35"><stop stop-color="#ffdda1"/><stop offset=".3" stop-color="#b77e31"/><stop offset=".7" stop-color="#784227"/><stop offset="1" stop-color="#3e2f20"/></radialGradient></defs><path d="m21 11 12 1-2 7c-3 8 3 11 7 19 5 11-1 18-13 18-13 0-18-9-13-18 4-8 12-13 9-20z" fill="url(#glass)" stroke="#bca470"/><path d="m19 9 15 2-1 6-15-2zM18 22l13 2" fill="#8e7c4f" stroke="#dbc99a"/><path d="M18 36c-5 11-4 14 0 16m3-20-3 6" fill="none" stroke="#ffce7c"/></svg><b id="flask"></b></div><label>Moonlit greatsword</label></div>
  <div id="foe"><div class="foebar" role="meter" aria-label="Guardian health" aria-valuemin="0" aria-valuemax="420"><span></span><i aria-hidden="true"></i></div><small id="damage"></small></div><div id="lock"></div><div id="cue" aria-live="polite"></div>
 </div>
-<div class="playtools" id="playtools" hidden><output id="fps" title="Rendered frames per second" aria-label="Rendered frames per second" aria-live="off">… FPS</output><button class="round" id="centerCam" aria-label="Face the guardian" title="Face the guardian (C)">◎</button><button class="round" id="fullscreen2" aria-label="Full screen" title="Full screen (Enter)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg></button><button class="round" id="pause" aria-label="Pause game" title="Pause (Esc)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 2h3v12H3zm7 0h3v12h-3z"/></svg></button></div>
-<div id="touch" hidden><div id="moveZone" aria-label="Move"></div><div class="pad"><i></i></div><div id="buttons"><button data-do="attack" aria-label="Strike">Strike</button><button data-do="wave" aria-label="Wave">Wave</button><button data-do="fault" aria-label="Faultbreaker">Fault</button><button data-do="storm" aria-label="Storm Lance">Storm</button><button data-do="roll" aria-label="Dodge">Dodge</button><button data-do="thrust" aria-label="Lunge thrust">Lunge</button><button data-do="kick" aria-label="Push kick">Kick</button><button data-do="slip" aria-label="Slip step">Step</button><button data-do="guard" aria-label="Guard and parry">Guard</button><button data-do="sprint" aria-label="Sprint">Run</button><button data-do="heal" aria-label="Flask">Flask</button></div></div>
+<div class="playtools" id="playtools" hidden><output id="fps" title="Rendered frames per second" aria-label="Rendered frames per second" aria-live="off">… FPS</output><button class="round" id="centerCam" aria-label="Toggle guardian lock-on" aria-pressed="false" title="Lock camera on guardian (C)">◎</button><button class="round" id="fullscreen2" aria-label="Full screen" title="Full screen (Enter)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg></button><button class="round" id="pause" aria-label="Pause game" title="Pause (Esc)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 2h3v12H3zm7 0h3v12h-3z"/></svg></button></div>
+<div id="touch" hidden><div id="moveZone" aria-label="Move"></div><div class="pad"><i></i></div><div id="buttons"><button data-do="attack" aria-label="Strike"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5 9.5 14.5M14.5 5H19v4.5M7.5 12.5l4 4M6 18l-2.5 2.5"/></svg><span>Strike</span></button><button data-do="wave" aria-label="Wave"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14c3.5-6.5 8-8.5 13-7.5M5.5 19c4.5-5 9-7 15-5.5M14 4.5l3 2-1.5 3"/></svg><span>Wave</span></button><button data-do="fault" aria-label="Faultbreaker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3 9.5 9l4.5 2.5L10 16l3.5 2.5L11.5 21M5 21h14"/></svg><span>Fault</span></button><button data-do="storm" aria-label="Storm Lance"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2.5 5.5 13.5h5.5L9.5 21.5l9-12H12.5z"/></svg><span>Storm</span></button><button data-do="roll" aria-label="Dodge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.8-6.1M20 3.8v4.4h-4.4"/></svg><span>Dodge</span></button><button data-do="thrust" aria-label="Lunge thrust"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h14M12.5 6.5 18 12l-5.5 5.5M20.5 8v8"/></svg><span>Lunge</span></button><button data-do="kick" aria-label="Push kick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v4M12 16.5v4M3.5 12h4M16.5 12h4M6 6l2.8 2.8M15.2 15.2 18 18M18 6l-2.8 2.8M8.8 15.2 6 18"/><circle cx="12" cy="12" r="1.6"/></svg><span>Kick</span></button><button data-do="slip" aria-label="Slip step"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5h13.5L14 5M20 15.5H6.5L10 19"/></svg><span>Step</span></button><button data-do="guard" aria-label="Guard and parry"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6v6c0 4.4-3 7.4-7 9-4-1.6-7-4.6-7-9V6z"/><path d="M12 8v8" opacity=".6"/></svg><span>Guard</span></button><button data-do="sprint" aria-label="Sprint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 6 6-6 6M13 6l6 6-6 6"/></svg><span>Run</span></button><button data-do="heal" aria-label="Flask"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3h4M11 3v5.5L6 17a2 2 0 0 0 1.7 3h8.6A2 2 0 0 0 18 17l-5-8.5V3M8.5 14h7"/></svg><span>Flask</span></button></div></div>
 <div id="banner" hidden></div>
 <section id="overlay"><div id="panel"><div id="place">The Moonlit Ledge</div><h1>Cinder<br>Colossus</h1><p id="description">Catch the guardian’s sweep on a roll. Strike as you rise, or hold your blade high to send a moonlit wave.</p>
 <div id="actions"><button id="primary" class="mainbtn" disabled>Loading courtyard…</button><button id="guide" class="subbtn">Controls</button><button id="restart" class="subbtn" hidden>Restart encounter</button></div></div>
 <div class="options"><button id="audio" aria-pressed="true">Sound on</button><button id="motion" aria-pressed="false">Motion full</button><button id="fullscreen">Full screen</button></div></section>
 <section id="help" hidden aria-label="Controls"><div><h2>Controls</h2><p>Defeat the guardian. Strike within reach or send a charged wave across the ledge. Tap Strike again as the blade crosses your body to chain a backhand and an overhead finisher. Press Strike during a roll to rise into an upward cut. Sprint to close distance, lunge with a thrust, push-kick to break an attack, slip aside or back-step, and raise your guard: a block just as a blow lands is a parry that staggers the guardian and opens a riposte.</p>
-<div class="keygrid"><div>Move relative to camera <kbd>W A S D / Arrows</kbd></div><div>Quick strike <kbd>Tap J / Left click</kbd></div><div>Charged wave <kbd>Hold J, release / K</kbd></div><div>Dodge <kbd>Space / Right click</kbd></div><div>Faultbreaker <kbd>U / LB</kbd></div><div>Storm Lance <kbd>I / RB</kbd></div><div>Drink flask <kbd>F</kbd></div><div>Sprint <kbd>Hold Shift / L3</kbd></div><div>Lunge thrust <kbd>L / RT</kbd></div><div>Push kick <kbd>G / D-pad Up</kbd></div><div>Slip step / back-step <kbd>V / D-pad Down</kbd></div><div>Guard &amp; parry <kbd>Hold H / LT</kbd></div><div>Pause <kbd>Esc / P</kbd></div><div>Orbit camera <kbd>Drag / Q and E</kbd></div><div>Recenter / zoom <kbd>C / Wheel</kbd></div></div>
-<p>Cross the lip to drop into the lane. Dodge toward the ledge to vault back up. Faultbreaker drives a burning fissure forward (31 stamina, 14 focus). Storm Lance marks the ground for a delayed lightning strike (26 stamina, 21 focus). Rest to regain stamina and focus.</p><p>Use the right stick to orbit and press it to face the guardian. On a controller, X strikes, Y casts, B dodges and A heals. On a touchscreen, drag the arena to turn the camera.</p><div class="mixer" aria-label="Audio mix"><label>Music <input type="range" min="0" max="100" id="musicLevel" value="82"><output for="musicLevel">82%</output></label><label>Battle effects <input type="range" min="0" max="100" id="effectsLevel" value="92"><output for="effectsLevel">92%</output></label></div><button class="mainbtn" id="closeHelp">Back</button></div></section>
+<div class="keygrid"><div>Move relative to camera <kbd>W A S D / Arrows</kbd></div><div>Quick strike <kbd>Tap J / Left click</kbd></div><div>Charged wave <kbd>Hold J, release / K</kbd></div><div>Dodge <kbd>Space / Right click</kbd></div><div>Faultbreaker <kbd>U / LB</kbd></div><div>Storm Lance <kbd>I / RB</kbd></div><div>Drink flask <kbd>F</kbd></div><div>Sprint <kbd>Hold Shift / L3</kbd></div><div>Lunge thrust <kbd>L / RT</kbd></div><div>Push kick <kbd>G / D-pad Up</kbd></div><div>Slip step / back-step <kbd>V / D-pad Down</kbd></div><div>Guard &amp; parry <kbd>Hold H / LT</kbd></div><div>Pause <kbd>Esc / P</kbd></div><div>Orbit camera <kbd>Drag / Q and E</kbd></div><div>Tilt camera angle <kbd>Drag up/down / Z and X</kbd></div><div>Lock-on camera / zoom <kbd>C / Wheel</kbd></div></div>
+<p>Cross the lip to drop into the lane. Dodge toward the ledge to vault back up. Faultbreaker drives a burning fissure forward (31 stamina, 14 focus). Storm Lance marks the ground for a delayed lightning strike (26 stamina, 21 focus). Rest to regain stamina and focus.</p><p>The camera is free: look a full 360° with the right stick, mouse drag or Q and E. Press the stick or C to toggle lock-on to the guardian. On a controller, X strikes, Y casts, B dodges and A heals. On a touchscreen, drag the arena to turn the camera.</p><div class="mixer" aria-label="Audio mix"><label>Music <input type="range" min="0" max="100" id="musicLevel" value="82"><output for="musicLevel">82%</output></label><label>Battle effects <input type="range" min="0" max="100" id="effectsLevel" value="92"><output for="effectsLevel">92%</output></label></div><button class="mainbtn" id="closeHelp">Back</button></div></section>
 </main>
 <script>console.warn('Scripts "build/three.js" and "build/three.min.js" are deprecated with r150+, and will be removed with r160. Please use ES Modules or alternatives: https://threejs.org/docs/index.html#manual/en/introduction/Installation'),
 /**
@@ -7631,10 +7652,12 @@ const Stage=(()=>{
    stage.orbit=(dx,dy)=>{
      if(Math.abs(dx)+Math.abs(dy)<.00001)return;
      if(stage.tracking)target.yaw=stage.yaw;
-     stage.tracking=false;target.yaw+=dx;target.pitch=clamp(target.pitch+dy,.12,1.18);
+     stage.tracking=false;target.yaw+=dx;target.pitch=clamp(target.pitch+dy,.03,1.45);
    };
    stage.zoom=d=>{target.distance=clamp(target.distance+d,2.85,7.25);};
-   stage.recenter=s=>{stage.tracking=true;target.yaw=stage.yaw+shortest(-s.p.heading-.45-stage.yaw);target.pitch=.29;target.distance=5.10;};
+   stage.tracking=false;
+   stage.recenter=(s,lock)=>{stage.tracking=!!lock;target.yaw=stage.yaw+shortest(-s.p.heading-.45-stage.yaw);target.pitch=.29;target.distance=5.10;};
+   stage.toggleLock=s=>{if(stage.tracking){stage.tracking=false;target.yaw=stage.yaw;}else stage.recenter(s,true);return stage.tracking;};
    stage.move=(x,z)=>({x:-Math.cos(stage.yaw)*x-Math.sin(stage.yaw)*z,z:-Math.sin(stage.yaw)*x+Math.cos(stage.yaw)*z});
    stage.reset=s=>{shadowTime=Infinity;bannerTick=-1;stage.readyFocus=false;stage.recenter(s);
      for(const key of Object.keys(target)){stage[key]=target[key];velocity[key]=0;}
@@ -7661,7 +7684,7 @@ const Stage=(()=>{
      const p=s.p,b=s.b,headroom=p.state==='charge'?.12*p.charge:0;
      const eye=new T.Vector3(p.x,p.y+1.24+headroom,p.z),toward=new T.Vector3(b.x-p.x,0,b.z-p.z).normalize();
      const gap=Math.hypot(b.x-p.x,b.z-p.z),air=Math.max(0,b.y-Combat.level(b.z));
-     eye.addScaledVector(toward,play?clamp(gap*.27,.44,1.34):.34);
+     eye.addScaledVector(toward,play&&stage.tracking?clamp(gap*.27,.44,1.34):.34);
      if(play){
        const highBlade=p.state==='charge'?Math.min(1,p.charge/.62):p.state==='cast'?1-Math.min(1,p.t/.30):0;
        const raisedAxe=b.state==='warn'||b.state==='attack'?Math.max(0,beast.axe.localToWorld(new T.Vector3(0,1.40,0)).y-p.y-2.2):0;
@@ -7670,7 +7693,7 @@ const Stage=(()=>{
          const aim=-Math.atan2(b.x-p.x,b.z-p.z)-.45;
          target.yaw=stage.yaw+shortest(aim-stage.yaw);
        }
-       follow('yaw',dt,stage.tracking?8:22,stage.tracking?3.7:4.7);follow('pitch',dt,22,2.9);follow('distance',dt,12,8);
+       follow('yaw',dt,stage.tracking?8:22,stage.tracking?3.7:9);follow('pitch',dt,22,5);follow('distance',dt,12,8);
        const cross=b.kind==='hook'&&b.state==='attack'?Math.sin(Math.PI*Math.min(1,b.t/Combat.patterns.hook.active)):0;
        const lunge=b.kind==='counter'&&b.state==='attack'?Math.sin(Math.PI*clamp(b.t/.54,0,1)):0;
        const catchRoll=p.state==='roll'?Math.sin(Math.PI*Math.min(1,p.t/.64)):0;
@@ -7690,9 +7713,10 @@ const Stage=(()=>{
        const hit=(-5.45-base.z)/ray.z;
        if(hit>0&&hit<r){const lift=T.MathUtils.smoothstep(base.y+hit*ray.y,1.7,2.12);r=T.MathUtils.lerp(hit-.17,r,lift);}
      }
-     r=Math.max(1.12,r);
+     r=Math.max(1.6,r);
      stage.clearance=stage.clearance==null?r:Math.min(r,T.MathUtils.lerp(stage.clearance,r,1-Math.exp(-dt*5.8)));
      camera.position.copy(base).addScaledVector(ray,stage.clearance);
+     {const gy=Footwork.terrain(camera.position.x,camera.position.z)+.35;if(Number.isFinite(gy)&&camera.position.y<gy)camera.position.y=gy;}
      if(camera.position.z<.08&&camera.position.z> -5.4)camera.position.y=Math.max(.49,camera.position.y);
      const shake=reduced?0:fx.mouseShake;
      camera.position.x+=Math.sin(s.time*24)*shake*.022;camera.position.y+=Math.sin(s.time*32)*shake*.017;
@@ -8415,7 +8439,7 @@ class ArenaAudio {
     if(newButtons[9]&&!was[9]){if(state==='title'||state==='result')begin();else pause();}
     if(state==='playing'){
       look.x=dead(gp.axes[2]);look.y=dead(gp.axes[3]);
-      if(newButtons[11]&&!was[11])scene.recenter(s);
+      if(newButtons[11]&&!was[11])toggleLock();
       for(const [i,k]of [[2,'attack'],[3,'wave'],[1,'roll'],[0,'heal'],[4,'fault'],[5,'storm']])if(newButtons[i]&&!was[i])command(k);
       if(!newButtons[2]&&was[2])command('release');
       if(newButtons[7]&&!was[7])command('thrust');
@@ -8426,6 +8450,11 @@ class ArenaAudio {
     }
     pad.buttons=newButtons;
   }
+  function toggleLock(){
+    const on=scene.toggleLock(s),b=$('#centerCam');
+    b.setAttribute('aria-pressed',on);b.style.background=on?'#6b5d3ccc':'';
+    const c=$('#cue');if(c){c.textContent=on?'Camera locked on the guardian':'Free camera';c.style.opacity=1;clearTimeout(toggleLock.t);toggleLock.t=setTimeout(()=>c.style.opacity=0,1100);}
+  }
   let dtAvg=1/60;
   function frame(now){
     const elapsed=last?Math.max(0,(now-last)/1000):0,rawDt=Math.min(.12,elapsed);last=now;pollPad();
@@ -8435,7 +8464,7 @@ class ArenaAudio {
     let dt=rawDt;
     if(rawDt>0&&rawDt<.05){dtAvg+=(rawDt-dtAvg)*.12;dt=rawDt*.3+dtAvg*.7;}else if(rawDt>=.05)dtAvg=1/60;
     if(state==='playing'){
-      scene.orbit(dt*((keys.has('KeyE')?1:0)-(keys.has('KeyQ')?1:0)+look.x)*2.12,-look.y*dt*1.26);
+      scene.orbit(dt*((keys.has('KeyE')?1:0)-(keys.has('KeyQ')?1:0)+look.x)*2.12,dt*(((keys.has('KeyZ')?1:0)-(keys.has('KeyX')?1:0))*1.5-look.y*1.26));
       const hold=reduced?0:Math.min(dt,impactHold);
       impactHold=Math.max(0,impactHold-dt);acc=Math.min(.15,acc+dt-.78*hold);const v=input();
       while(acc>=1/120){Smooth.capture(s);Combat.step(s,1/120,v);acc-=1/120;}
@@ -8466,8 +8495,8 @@ class ArenaAudio {
     if(state!=='playing'){
       if(ready&&e.code==='Enter'&&help.hidden&&!e.repeat&&(e.target===document.body||e.target===ground)){e.preventDefault();begin();}return;
     }
-    if(e.code==='KeyC'){e.preventDefault();scene.recenter(s);return;}
-    if(keyboard[e.code]||e.code.startsWith('Arrow')||['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','ShiftLeft','ShiftRight','KeyH'].includes(e.code)){
+    if(e.code==='KeyC'){e.preventDefault();toggleLock();return;}
+    if(keyboard[e.code]||e.code.startsWith('Arrow')||['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','ShiftLeft','ShiftRight','KeyH','KeyZ','KeyX'].includes(e.code)){
       e.preventDefault();keys.add(e.code);if(!e.repeat&&keyboard[e.code])command(keyboard[e.code]);
       if(!e.repeat&&(e.code==='ShiftLeft'||e.code==='ShiftRight'))command('sprint');
       if(!e.repeat&&e.code==='KeyH')command('guardOn');
@@ -8496,7 +8525,7 @@ class ArenaAudio {
   });
   ground.addEventListener('lostpointercapture',()=>{if(drag?.charged)command('release');stopDrag();});
   ground.addEventListener('wheel',e=>{if(state==='playing'){e.preventDefault();scene.zoom(Math.sign(e.deltaY)*.32);}},{passive:false});
-  $('#centerCam').addEventListener('click',()=>scene.recenter(s));
+  $('#centerCam').addEventListener('click',toggleLock);
   const touchBtn={};for(const el of document.querySelectorAll('#buttons [data-do]'))touchBtn[el.dataset.do]=el;
   const joy=$('.pad'),zone=$('#moveZone'),knob=$('.pad i');let pointer=null,origin={x:0,y:0};
   // Floating thumbstick: the base appears where the thumb lands and the knob is
