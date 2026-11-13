@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#11130f"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>Cinder Colossus · The Moonlit Ledge · 360°</title>
+<meta name="theme-color" content="#11130f"><title>Cinder Colossus · The Moonlit Ledge · 360°</title>
 <style>
 :root{color-scheme:dark;--gold:#d5bf8e;--ivory:#eee6d4;--fine:#a28b62;font-family:Georgia,'Times New Roman',serif}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080a0a;color:var(--ivory)}body{display:grid;place-items:center}button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}button:focus-visible{outline:2px solid #e9d5a0;outline-offset:4px}button:disabled{cursor:wait}
@@ -37,7 +37,7 @@ body.touching .gear{bottom:28%}#banner{position:absolute;left:0;right:0;top:40%;
 @media(max-width:650px) and (orientation:portrait){#stage{overflow:visible}#panel{width:56%}#overlay{padding:4%}#description{font-size:10px;margin:0 0 .6em}h1{font-size:30px}.options{bottom:4%;right:2%;gap:3px}.options button{font-size:9px;padding:4px}.mainbtn{padding:.38em .6em}.pad{top:calc(100% + 20px);left:4%;width:83px}#buttons{top:calc(100% + 20px);bottom:auto}#buttons button{min-width:58px;min-height:39px}.playtools{right:2%;top:3%}.round{min-width:26px;min-height:24px}body.touching .gear{bottom:5%}#help{padding:2%;align-content:start}#help>div{width:95%}.keygrid{gap:0 12px}.keygrid div{padding:.2em 0}}
 @media(max-height:480px) and (orientation:landscape){#description{margin-bottom:.8em}.keygrid div{padding:.25em 0}#help p{margin:.2em 0 .4em}.options{bottom:3%}}
 .mixer{display:flex;flex-wrap:wrap;gap:.5em 2em;margin:.8em 0 1.15em;font-size:clamp(11px,1.1cqw,17px)}.mixer label{display:flex;align-items:center;gap:.65em}.mixer input{accent-color:#b79f72;width:clamp(55px,8cqw,125px)}.mixer output{font:normal .8em system-ui;color:#c5b89c;min-width:3ch}@media(max-height:550px){#help{align-content:start}}
-#fstoast{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);max-width:86%;padding:.7em 1em;border:1px solid #c3b79b80;background:#101511ee;color:var(--ivory);font:500 clamp(11px,1.5cqw,15px)/1.35 system-ui,sans-serif;text-align:center;z-index:60;pointer-events:none;opacity:0;transition:opacity .25s}#fstoast.on{opacity:1}#fps{align-self:center;padding:.32em .52em;border:1px solid #80765d55;background:#101511a6;color:#ddd4bb;font:500 clamp(9px,.82cqw,13px)/1.2 system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}</style></head>
+#fps{align-self:center;padding:.32em .52em;border:1px solid #80765d55;background:#101511a6;color:#ddd4bb;font:500 clamp(9px,.82cqw,13px)/1.2 system-ui,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}</style></head>
 <body><main id="stage" aria-label="Cinder Colossus game">
 <canvas id="ground" class="layer" aria-label="Courtyard combat arena"></canvas><div class="layer lens"></div>
 <div id="hud" hidden>
@@ -46,7 +46,7 @@ body.touching .gear{bottom:28%}#banner{position:absolute;left:0;right:0;top:40%;
  <div class="gear"><div class="slot" aria-label="Healing flasks"><svg viewBox="0 0 50 65" aria-hidden="true"><defs><radialGradient id="glass" cx=".4" cy=".35"><stop stop-color="#ffdda1"/><stop offset=".3" stop-color="#b77e31"/><stop offset=".7" stop-color="#784227"/><stop offset="1" stop-color="#3e2f20"/></radialGradient></defs><path d="m21 11 12 1-2 7c-3 8 3 11 7 19 5 11-1 18-13 18-13 0-18-9-13-18 4-8 12-13 9-20z" fill="url(#glass)" stroke="#bca470"/><path d="m19 9 15 2-1 6-15-2zM18 22l13 2" fill="#8e7c4f" stroke="#dbc99a"/><path d="M18 36c-5 11-4 14 0 16m3-20-3 6" fill="none" stroke="#ffce7c"/></svg><b id="flask"></b></div><label>Moonlit greatsword</label></div>
  <div id="foe"><div class="foebar" role="meter" aria-label="Guardian health" aria-valuemin="0" aria-valuemax="420"><span></span><i aria-hidden="true"></i></div><small id="damage"></small></div><div id="lock"></div><div id="cue" aria-live="polite"></div>
 </div>
-<div class="playtools" id="playtools" hidden><output id="fps" title="Rendered frames per second" aria-label="Rendered frames per second" aria-live="off">… FPS</output><button class="round" id="centerCam" aria-label="Face the guardian" title="Face the guardian (C)">◎</button><button class="round" id="fullscreen2" aria-label="Full screen" title="Full screen (Enter)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg></button><button class="round" id="pause" aria-label="Pause game" title="Pause (Esc)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 2h3v12H3zm7 0h3v12h-3z"/></svg></button></div>
+<div class="playtools" id="playtools" hidden><output id="fps" title="Rendered frames per second" aria-label="Rendered frames per second" aria-live="off">… FPS</output><button class="round" id="centerCam" aria-label="Face the guardian" title="Face the guardian (C)">◎</button><button class="round" id="pause" aria-label="Pause game" title="Pause (Esc)"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M3 2h3v12H3zm7 0h3v12h-3z"/></svg></button></div>
 <div id="touch" hidden><div class="pad" aria-label="Move"><i></i></div><div id="buttons"><button data-do="attack">Strike</button><button data-do="wave">Wave</button><button data-do="fault">Faultbreaker</button><button data-do="storm">Storm Lance</button><button data-do="roll">Dodge</button><button data-do="heal">Flask</button></div></div>
 <div id="banner" hidden></div>
 <section id="overlay"><div id="panel"><div id="place">The Moonlit Ledge</div><h1>Cinder<br>Colossus</h1><p id="description">Catch the guardian’s sweep on a roll. Strike as you rise, or hold your blade high to send a moonlit wave.</p>
@@ -5692,22 +5692,9 @@ const Combat = (() => {
       tx+=Math.sin(p.heading)*transfer;tz+=Math.cos(p.heading)*transfer;
     }
     const dvx=tx-p.vx,dvz=tz-p.vz,delta=Math.hypot(dvx,dvz);
-    if(p.state==='move'||p.state==='idle'||p.state==='charge'){
-      // Acceleration itself is eased, so a step starts and stops without a hard edge.
-      const reversing=delta>.001&&p.vx*dvx+p.vz*dvz<0;
-      const gain=reversing?13:10,limit=reversing?15:11.5;
-      let wx=dvx*gain,wz=dvz*gain;const wm=Math.hypot(wx,wz);
-      if(wm>limit){wx*=limit/wm;wz*=limit/wm;}
-      const blend=1-Math.exp(-dt*42);
-      p.ax=(p.ax||0)+(wx-(p.ax||0))*blend;p.az=(p.az||0)+(wz-(p.az||0))*blend;
-      p.vx+=p.ax*dt;p.vz+=p.az*dt;
-      if(Math.hypot(tx,tz)<.001&&Math.hypot(p.vx,p.vz)<.03){p.vx=p.vz=p.ax=p.az=0;}
-    }else{
-      p.ax=p.az=0;
-      const acceleration=p.state==='roll'?58:p.state==='cut'||p.state==='cast'?24:(delta>.001&&p.vx*dvx+p.vz*dvz<0?13:8.6);
-      const fraction=Math.min(1,acceleration*dt/Math.max(.00001,delta));
-      p.vx+=dvx*fraction;p.vz+=dvz*fraction;
-    }
+    const acceleration=p.state==='roll'?58:p.state==='cut'||p.state==='cast'?24:(delta>.001&&p.vx*dvx+p.vz*dvz<0?13:8.6);
+    const fraction=Math.min(1,acceleration*dt/Math.max(.00001,delta));
+    p.vx+=dvx*fraction;p.vz+=dvz*fraction;
     p.x=clamp(p.x+p.vx*dt,-7.8,7.8);
     let nextZ=clamp(p.z+p.vz*dt,-3.7,6.5);
     if((p.state==='cut'||p.state==='cast'||arts[p.state])&&p.z<=.06&&nextZ>.06){nextZ=.06;p.vz=0;}
@@ -5752,18 +5739,11 @@ const Combat = (() => {
     }
     if(b.state==='approach'){
       b.wait-=dt;const side=b.index%2?-1:1,offset=side*(.77+.34*Math.sin(b.t*2.7));
-      const rawX=p.x+offset,rawZ=clamp(p.z+1.93+.24*Math.sin(b.t*2.4),.68,6.4);
-      if(b.goalX===undefined||b.t<=dt*1.5){b.goalX=rawX;b.goalZ=rawZ;b.ax=b.az=0;}
-      // Low-pass the goal so the guardian follows the knight's footwork without twitching.
-      const goalBlend=1-Math.exp(-dt*6);
-      b.goalX+=(rawX-b.goalX)*goalBlend;b.goalZ+=(rawZ-b.goalZ)*goalBlend;
-      const tx=b.goalX,tz=b.goalZ;
+      const tx=p.x+offset,tz=clamp(p.z+1.93+.24*Math.sin(b.t*2.4),.68,6.4);
       const dx=tx-b.x,dz=tz-b.z,d=Math.max(.001,Math.hypot(dx,dz)),speed=Math.min(1.72,d*2.05);
-      let wx=(dx/d*speed-b.vx)*6.5,wz=(dz/d*speed-b.vz)*6.5;const wm=Math.hypot(wx,wz);
-      if(wm>4.4){wx*=4.4/wm;wz*=4.4/wm;}
-      const accBlend=1-Math.exp(-dt*28);
-      b.ax=(b.ax||0)+(wx-(b.ax||0))*accBlend;b.az=(b.az||0)+(wz-(b.az||0))*accBlend;
-      b.vx+=b.ax*dt;b.vz+=b.az*dt;b.x+=b.vx*dt;b.z+=b.vz*dt;b.walk+=Math.hypot(b.vx,b.vz)*dt*4.7;
+      const vx=dx/d*speed-b.vx,vz=dz/d*speed-b.vz;
+      const change=Math.min(1,3.6*dt/Math.max(.001,Math.hypot(vx,vz)));
+      b.vx+=vx*change;b.vz+=vz*change;b.x+=b.vx*dt;b.z+=b.vz*dt;b.walk+=Math.hypot(b.vx,b.vz)*dt*4.7;
       if(b.wait<=0&&(dist(b,p)<2.95||b.t>=2.12)){
         if(b.index>0&&b.index%3===1&&b.lastBound!==b.index){
           b.lastBound=b.index;b.boundSide=b.x>5?-1:b.x< -5?1:side;
@@ -7363,49 +7343,6 @@ function courtOptics(renderer,camera) {
   };
 }
 
-/* Render-time smoothing: the simulation runs at a fixed 120 Hz while the
-   screen refreshes at an unrelated rate. Drawing the raw latest step makes
-   motion advance in uneven jumps. Instead we blend the previous and latest
-   simulation steps by the fraction of a step left in the accumulator. */
-const Smooth=(()=>{
-  let prevP=null,prevB=null,prevTime=0,src=null;
-  function clone(v,depth){
-    if(v===null||typeof v!=='object')return v;
-    if(Array.isArray(v)){const o=new Array(v.length);for(let i=0;i<v.length;i++)o[i]=clone(v[i],depth+1);return o;}
-    if(depth>6)return v;
-    const o={};for(const k in v)o[k]=clone(v[k],depth+1);return o;
-  }
-  function mix(a,b,k){
-    if(typeof b==='number'){
-      if(typeof a!=='number'||a===b||!isFinite(a)||!isFinite(b))return b;
-      if(Number.isInteger(a)&&Number.isInteger(b))return b; // counters and indices never blend
-      return a+(b-a)*k;
-    }
-    if(b===null||typeof b!=='object'||a===null||typeof a!=='object')return b;
-    if(Array.isArray(b)){
-      if(!Array.isArray(a)||a.length!==b.length)return b;
-      const o=new Array(b.length);for(let i=0;i<b.length;i++)o[i]=mix(a[i],b[i],k);return o;
-    }
-    const o={};for(const key in b)o[key]=mix(a[key],b[key],k);return o;
-  }
-  function pose(a,b,k){
-    // Do not blend across a state change, a restarted animation or a teleport.
-    if(!a||a.state!==b.state||a.kind!==b.kind||a.combo!==b.combo||a.rising!==b.rising||a.linked!==b.linked)return b;
-    if(b.t<a.t-1e-9||Math.abs(b.x-a.x)+Math.abs(b.z-a.z)>.3||Math.abs(b.y-a.y)>.5)return b;
-    return mix(a,b,k);
-  }
-  return {
-    capture(s){src=s;prevP=clone(s.p,0);prevB=clone(s.b,0);prevTime=s.time;},
-    view(s,alpha){
-      if(!prevP||src!==s)return s;
-      const k=Math.max(0,Math.min(1,alpha));
-      const v=Object.assign({},s);
-      v.p=pose(prevP,s.p,k);v.b=pose(prevB,s.b,k);v.time=prevTime+(s.time-prevTime)*k;
-      return v;
-    }
-  };
-})();
-
 const Stage=(()=>{
  const T=THREE,W=1672,H=941,clamp=THREE.MathUtils.clamp;
  async function create(canvas){
@@ -8117,7 +8054,7 @@ class ArenaAudio {
   function settings(){
     $('#audio').textContent=snd.enabled?'Sound on':'Sound off';$('#audio').setAttribute('aria-pressed',String(snd.enabled));
     $('#motion').textContent=reduced?'Motion reduced':'Motion full';$('#motion').setAttribute('aria-pressed',String(reduced));
-    $('#fullscreen').textContent=(document.fullscreenElement||document.webkitFullscreenElement)?'Exit full screen':'Full screen';
+    $('#fullscreen').textContent=document.fullscreenElement?'Exit full screen':'Full screen';
   }
   const framePeriod=1000/60;
   const fpsReadout=$('#fps');
@@ -8240,7 +8177,7 @@ class ArenaAudio {
       scene.orbit(dt*((keys.has('KeyE')?1:0)-(keys.has('KeyQ')?1:0)+look.x)*2.12,-look.y*dt*1.26);
       const hold=reduced?0:Math.min(dt,impactHold);
       impactHold=Math.max(0,impactHold-dt);acc=Math.min(.15,acc+dt-.78*hold);const v=input();
-      while(acc>=1/120){Smooth.capture(s);Combat.step(s,1/120,v);acc-=1/120;}
+      while(acc>=1/120){Combat.step(s,1/120,v);acc-=1/120;}
       for(const e of s.events)receive(e);s.events.length=0;
       snd.update(s,dt);
       if(s.outcome){finishTime+=dt;if(finishTime>.44)banner.hidden=false;if(finishTime>2.35){state='result';interfaceState();snd.quiet();primary.focus({preventScroll:true});}}
@@ -8251,7 +8188,7 @@ class ArenaAudio {
       do{nextDraw+=framePeriod;}while(nextDraw<=now+.40);
       lastDraw=now;
       const visualDt=state==='paused'||state==='result'?0:Math.min(.12,interval/1000);
-      scene.draw(state==='playing'&&!reduced?Smooth.view(s,acc*120):s,visualDt,state!=='title',reduced);
+      scene.draw(s,visualDt,state!=='title',reduced);
       if(state==='playing'||state==='paused')hud(visualDt);
       if(state==='playing'&&previous)measurePresentation(now,interval);
     }
@@ -8308,32 +8245,8 @@ class ArenaAudio {
   $('#guide').addEventListener('click',()=>{help.hidden=false;$('#closeHelp').focus({preventScroll:true});});$('#closeHelp').addEventListener('click',()=>{help.hidden=true;$('#guide').focus({preventScroll:true});});
   $('#audio').addEventListener('click',()=>{snd.enabled=!snd.enabled;setPref('audio',snd.enabled);if(!snd.enabled)snd.quiet();else if(state==='playing')snd.start();settings();});
   $('#motion').addEventListener('click',()=>{reduced=!reduced;setPref('motion',reduced);settings();});
-  {
-    const root=document.documentElement,fsOn=()=>document.fullscreenElement||document.webkitFullscreenElement;
-    const request=root.requestFullscreen||root.webkitRequestFullscreen,exit=document.exitFullscreen||document.webkitExitFullscreen;
-    const standalone=navigator.standalone===true||matchMedia('(display-mode: standalone)').matches||matchMedia('(display-mode: fullscreen)').matches;
-    const toast=document.createElement('div');toast.id='fstoast';toast.setAttribute('role','status');$('#stage').appendChild(toast);
-    let toastTimer=0;
-    function tell(text){toast.textContent=text;toast.classList.add('on');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('on'),4800);}
-    async function toggle(){
-      try{
-        if(fsOn()){await exit.call(document);return;}
-        if(request){
-          await request.call(root,{navigationUI:'hide'});
-          // Phones: the arena is landscape, so lock it once the page is full screen.
-          try{await screen.orientation?.lock?.('landscape');}catch{}
-        }else if(standalone){tell('Already full screen.');}
-        else{
-          // iPhone Safari offers no full-screen API for web pages.
-          tell('iPhone: tap Share, then Add to Home Screen, and open the game from there for full screen. Rotating to landscape also hides most of the browser bars.');
-        }
-      }catch{tell('Full screen was blocked by the browser.');}
-    }
-    for(const b of document.querySelectorAll('#fullscreen,#fullscreen2'))b.addEventListener('click',e=>{e.stopPropagation();toggle();});
-    const onChange=()=>{settings();if(!fsOn())try{screen.orientation?.unlock?.();}catch{}};
-    document.addEventListener('fullscreenchange',onChange);document.addEventListener('webkitfullscreenchange',onChange);
-    if(standalone){for(const b of document.querySelectorAll('#fullscreen,#fullscreen2'))b.hidden=true;}
-  }
+  $('#fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{}});document.addEventListener('fullscreenchange',settings);
+  if(!document.documentElement.requestFullscreen)$('#fullscreen').hidden=true;
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&state==='playing'&&!s.outcome)pause();last=performance.now();});
   window.addEventListener('blur',()=>{if(state==='playing'&&!s.outcome)pause();});
   ground.addEventListener('webglcontextlost',e=>{e.preventDefault();if(state==='playing')pause();cancelAnimationFrame(raf);});
